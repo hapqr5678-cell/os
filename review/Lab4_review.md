@@ -1,6 +1,6 @@
 # Lab 4 複習：Library（Static & Dynamic）
 
-> 來源：Lab4.pptx（28 張投影片，含講者備註）＋ practice/lab4/（ex1.c、sort.c、exlib.h、exlib.a、exlib.so、ex1、ex_dy）
+> 來源：Lab4.pptx（28 張投影片，含講者備註）＋ practice/Lab4_ex/（ex1.c、sort.c、exlib.h、exlib.a、exlib.so、ex1、ex_dy）
 
 ---
 
@@ -136,7 +136,7 @@ $ ldd example_dynamic
 ```
 **為什麼編譯成功、執行卻失敗？** 編譯時 `-L.` 告訴 linker 去目前目錄找；但**執行時**是 dynamic linker 在找，它只看系統路徑（`/lib`、`/usr/lib`），而 lib.so 不在清單中。複製到 `/lib` 就解決。
 
-### 4.4 學生作業 practice/lab4
+### 4.4 學生作業 practice/Lab4_ex
 
 **exlib.h**
 ```c

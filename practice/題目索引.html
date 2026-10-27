@@ -1,0 +1,928 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>上機考題目索引</title><style>
+:root{--fg:#1a1a1a;--muted:#555;--line:#ccc;--ex:#0b5394;--g:#38761d;--code:#f3f3f3}
+@page{size:A4;margin:14mm 12mm}
+body{font-family:"WenQuanYi Zen Hei","Noto Sans CJK TC","Microsoft JhengHei","PingFang TC",sans-serif;color:var(--fg);background:#fff;font-size:11pt;line-height:1.5;max-width:900px;margin:0 auto;padding:0 16px}
+h1{font-size:20pt;margin:.2em 0}
+h2.lab{font-size:15pt;border-bottom:3px solid var(--fg);padding-bottom:3px;margin-top:1.2em;break-before:page}
+table.idx{border-collapse:collapse;width:100%;font-size:9.5pt;margin-bottom:.6em}
+table.idx td,table.idx th{border:1px solid var(--line);padding:3px 6px;text-align:left;vertical-align:top}
+table.idx th{background:#eee}
+table.idx td:nth-child(1){width:6.5em}table.idx td:nth-child(3){width:4em;white-space:nowrap}table.idx td:nth-child(4){width:12em}
+.card{border:1px solid var(--line);border-left:6px solid var(--g);border-radius:4px;padding:6px 12px;margin:10px 0;break-inside:avoid-page}
+.card.ex{border-left-color:var(--ex)}
+.head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.folder{font-family:monospace;font-weight:bold;font-size:14pt}
+.ex .folder{color:var(--ex)} .g .folder{color:var(--g)}
+.title{font-weight:bold}
+.tag{font-size:9pt;border:1px solid var(--muted);border-radius:3px;padding:0 5px;color:var(--muted)}
+.files{font-size:9.5pt;color:var(--muted);margin:2px 0 4px}
+.files code{color:var(--fg)}
+pre{background:var(--code);padding:6px 8px;font-size:8.5pt;line-height:1.35;white-space:pre-wrap;word-break:break-all;border-radius:3px}
+code{font-family:"WenQuanYi Zen Hei Mono",monospace;font-size:.92em}
+.card table{border-collapse:collapse;font-size:9pt} .card td,.card th{border:1px solid var(--line);padding:2px 5px}
+.note{font-size:9.5pt;color:var(--muted)}
+a{color:inherit;text-decoration:none}
+</style></head><body>
+<h1>上機考題目索引</h1><p class="note">看題目 → 找到對應資料夾 → 打開 <code>practice/資料夾/</code> 裡的程式碼。藍色 <b>LabN_ex</b> = 課堂 Exercise 原題;綠色 <b>LabN_gK</b> = 猜題(g1 最可能)。每個資料夾的 <code>README.md</code> 有完整解說與易錯點。</p>
+<table class="idx"><tr><th>資料夾</th><th>題目</th><th>可能性</th><th>檔案</th></tr>
+<tr><th colspan="4">Lab 1:Shell Script</th></tr>
+<tr><td><a href="#Lab1_ex"><code>Lab1_ex</code></a></td><td>猜數字遊戲 Number Guessing Game</td><td>原題</td><td>ex.sh</td></tr>
+<tr><td><a href="#Lab1_g1"><code>Lab1_g1</code></a></td><td>【原題重現】Number Guessing Game（1~10，範圍逐步縮小）</td><td>高</td><td>NGG.sh</td></tr>
+<tr><td><a href="#Lab1_g2"><code>Lab1_g2</code></a></td><td>【加料版猜數字】範圍與次數改用參數給，並統計猜了幾次</td><td>高</td><td>guess.sh</td></tr>
+<tr><td><a href="#Lab1_g3"><code>Lab1_g3</code></a></td><td>【case + function + expr】選單式計算機</td><td>中高</td><td>calc.sh</td></tr>
+<tr><td><a href="#Lab1_g4"><code>Lab1_g4</code></a></td><td>【Pipe】兩支 script 串接：產生分數 | 判定等第並統計</td><td>中</td><td>gen.sh, grade.sh</td></tr>
+<tr><td><a href="#Lab1_g5"><code>Lab1_g5</code></a></td><td>【命令列參數 + expr】三個數字：加總、最大值、階乘</td><td>中</td><td>nums.sh</td></tr>
+<tr><td><a href="#Lab1_g6"><code>Lab1_g6</code></a></td><td>【字串比較】帳號密碼檢查（最多 3 次）</td><td>中低</td><td>login.sh</td></tr>
+<tr><th colspan="4">Lab 2:Adding a New System Call</th></tr>
+<tr><td><a href="#Lab2_ex1"><code>Lab2_ex1</code></a></td><td>Exercise-1(60 分):完成範例,新增 hello syscall</td><td>原題</td><td>hello.c, test.c</td></tr>
+<tr><td><a href="#Lab2_ex2"><code>Lab2_ex2</code></a></td><td>Exercise-2(40 分):SYSCALL_DEFINE1 印 n 次 hello</td><td>原題</td><td>hello.c, test.c</td></tr>
+<tr><td><a href="#Lab2_g1"><code>Lab2_g1</code></a></td><td>Exercise 2 原題:傳入 n,印 n 次 hello</td><td>高</td><td>hello.c, test.c</td></tr>
+<tr><td><a href="#Lab2_g2"><code>Lab2_g2</code></a></td><td>SYSCALL_DEFINE2:兩個參數相加,並回傳結果</td><td>高</td><td>hello.c, test.c</td></tr>
+<tr><td><a href="#Lab2_g3"><code>Lab2_g3</code></a></td><td>用回傳值把計算結果帶回 user space</td><td>中~高</td><td>hello.c, test.c</td></tr>
+<tr><td><a href="#Lab2_g4"><code>Lab2_g4</code></a></td><td>流程/填空/口試題:新增 syscall 要改哪些檔案</td><td>中</td><td></td></tr>
+<tr><td><a href="#Lab2_g5"><code>Lab2_g5</code></a></td><td>新增第二個 syscall(編號 463):兩數相加</td><td>中低</td><td>hello.c, test.c</td></tr>
+<tr><td><a href="#Lab2_g6"><code>Lab2_g6</code></a></td><td>參數檢查:不合法時回傳錯誤</td><td>低</td><td>hello.c, test.c</td></tr>
+<tr><th colspan="4">Lab 3:System Call vs APIs</th></tr>
+<tr><td><a href="#Lab3_ex"><code>Lab3_ex</code></a></td><td>只用 &lt;unistd.h&gt; 印出 integer</td><td>原題</td><td>ex, ex.c</td></tr>
+<tr><td><a href="#Lab3_g1"><code>Lab3_g1</code></a></td><td>只用 &lt;unistd.h&gt; 印出字串與整數陣列（含負數）</td><td>高</td><td>q1.c</td></tr>
+<tr><td><a href="#Lab3_g2"><code>Lab3_g2</code></a></td><td>只用 &lt;unistd.h&gt; 從 stdin（fd 0）讀入兩個整數，輸出和</td><td>高</td><td>q2.c</td></tr>
+<tr><td><a href="#Lab3_g3"><code>Lab3_g3</code></a></td><td>只用 system call 複製檔案（自製 cp）</td><td>中高</td><td>q3.c</td></tr>
+<tr><td><a href="#Lab3_g4"><code>Lab3_g4</code></a></td><td>用 open() 指定權限建立檔案，把整數寫進檔案</td><td>中</td><td>q4.c</td></tr>
+<tr><td><a href="#Lab3_g5"><code>Lab3_g5</code></a></td><td>write() vs fwrite() 一次寫 1 byte，比較時間並用 strace 觀察</td><td>中</td><td>q5_fwrite.c, q5_write.c</td></tr>
+<tr><td><a href="#Lab3_g6"><code>Lab3_g6</code></a></td><td>用 C library（fopen/fread/fwrite/fclose）改寫檔案複製</td><td>低</td><td>q6.c</td></tr>
+<tr><th colspan="4">Lab 4:Library</th></tr>
+<tr><td><a href="#Lab4_ex"><code>Lab4_ex</code></a></td><td>Exercise 1 static library + Exercise 2 shared library(sort)</td><td>原題</td><td>ex1, ex1.c, ex_dy, exlib.a, exlib.h, exlib.so, sort.c, sort.o</td></tr>
+<tr><td><a href="#Lab4_g1"><code>Lab4_g1</code></a></td><td>降冪排序 library（10 個不重複亂數）</td><td>高</td><td>exercise.c, exlib.h, sort.c</td></tr>
+<tr><td><a href="#Lab4_g2"><code>Lab4_g2</code></a></td><td>統計函式庫 max / min / average（多個 .o 包成一個 library）</td><td>高</td><td>average.c, main.c, max.c, min.c, mylib.h</td></tr>
+<tr><td><a href="#Lab4_g3"><code>Lab4_g3</code></a></td><td>原題重現 + ldd 驗證 + 刪除 library 實驗</td><td>中高</td><td>exercise.c, exlib.h, sort.c</td></tr>
+<tr><td><a href="#Lab4_g4"><code>Lab4_g4</code></a></td><td>更新 library 後觀察 static / dynamic 行為差異</td><td>中</td><td>exercise.c, exlib.h, sort_v1.c, sort_v2.c</td></tr>
+<tr><td><a href="#Lab4_g5"><code>Lab4_g5</code></a></td><td>擴充投影片範例 — 四則運算 library</td><td>中</td><td>add.c, div.c, lib.h, main.c, mul.c, sub.c</td></tr>
+<tr><td><a href="#Lab4_g6"><code>Lab4_g6</code></a></td><td>字串函式庫 reverse + to_upper</td><td>低</td><td>main.c, reverse.c, strlib.h, upper.c</td></tr>
+<tr><th colspan="4">Lab 5:Kernel Module</th></tr>
+<tr><td><a href="#Lab5_ex"><code>Lab5_ex</code></a></td><td>date2timestamp + myage</td><td>原題</td><td>Makefile, Module.symvers, d2ts.c, d2ts.ko, d2ts.mod, d2ts.mod.c, d2ts.mod.o, d2ts.o, modules.order, myage.c, myage.ko, myage.mod, myage.mod.c, myage.mod.o, myage.o</td></tr>
+<tr><td><a href="#Lab5_g1"><code>Lab5_g1</code></a></td><td>倒數計時</td><td>高</td><td>Makefile, countdown.c, deadline.c</td></tr>
+<tr><td><a href="#Lab5_g2"><code>Lab5_g2</code></a></td><td>加上時分秒：活了幾年幾天幾時幾分幾秒</td><td>高</td><td>Makefile, date2timestamp.c, myage.c</td></tr>
+<tr><td><a href="#Lab5_g3"><code>Lab5_g3</code></a></td><td>Export 函式：兩個日期相差幾天</td><td>中高</td><td>Makefile, datelib.c, daydiff.c</td></tr>
+<tr><td><a href="#Lab5_g4"><code>Lab5_g4</code></a></td><td>精確足歲＋下次生日倒數</td><td>中</td><td>Makefile, birthday.c, date2timestamp.c</td></tr>
+<tr><td><a href="#Lab5_g5"><code>Lab5_g5</code></a></td><td>出生那天是星期幾</td><td>中低</td><td>Makefile, date2timestamp.c, weekday.c</td></tr>
+<tr><td><a href="#Lab5_g6"><code>Lab5_g6</code></a></td><td>單一 module：該年第幾天、是否閏年</td><td>低</td><td>Makefile, dayofyear.c</td></tr>
+<tr><th colspan="4">Lab 6:Process Control</th></tr>
+<tr><td><a href="#Lab6_ex1"><code>Lab6_ex1</code></a></td><td>Exercise 1(40 分):fork 後 global / local 變數</td><td>原題</td><td>ex1, ex1.c</td></tr>
+<tr><td><a href="#Lab6_ex2"><code>Lab6_ex2</code></a></td><td>Exercise 2(50 分):5 個 process 的樹</td><td>原題</td><td>ex2, ex2.c</td></tr>
+<tr><td><a href="#Lab6_g1"><code>Lab6_g1</code></a></td><td>換一棵 process tree（6 個 process）</td><td>高</td><td>q1_tree.c</td></tr>
+<tr><td><a href="#Lab6_g2"><code>Lab6_g2</code></a></td><td>Ex1 改成 parent 和 child 都遞增，加上 heap 變數</td><td>高</td><td>q2_vars.c</td></tr>
+<tr><td><a href="#Lab6_g3"><code>Lab6_g3</code></a></td><td>fork–exec，child 用 execlp 執行 ls -l，parent 等待後印訊息</td><td>中高</td><td>q3_exec.c</td></tr>
+<tr><td><a href="#Lab6_g4"><code>Lab6_g4</code></a></td><td>用迴圈 fork N 個 child（扇形樹），parent wait N 次並印出回收的 child PID</td><td>中</td><td>q4_fan.c</td></tr>
+<tr><td><a href="#Lab6_g5"><code>Lab6_g5</code></a></td><td>鏈狀 process tree A → B → C → D</td><td>中</td><td>q5_chain.c</td></tr>
+<tr><td><a href="#Lab6_g6"><code>Lab6_g6</code></a></td><td>fork() 連續呼叫 n 次，總共有幾個 process？</td><td>低～中</td><td>q6_count.c</td></tr>
+<tr><th colspan="4">Lab 7:IPC(Message Queue / Shared Memory)</th></tr>
+<tr><td><a href="#Lab7_ex1"><code>Lab7_ex1</code></a></td><td>Exercise-Lab1(50 分):Message Queue sender / receiver</td><td>原題</td><td>receiver, receiver.c, sender, sender.c</td></tr>
+<tr><td><a href="#Lab7_ex2"><code>Lab7_ex2</code></a></td><td>Exercise 2(50 分):Shared Memory producer / consumer</td><td>原題</td><td>consumer, consumer.c, producer, producer.c</td></tr>
+<tr><td><a href="#Lab7_g1"><code>Lab7_g1</code></a></td><td>雙向 Message Queue：計算機 client / server</td><td>高</td><td>client.c, server.c</td></tr>
+<tr><td><a href="#Lab7_g2"><code>Lab7_g2</code></a></td><td>Shared Memory 寫入多筆訊息直到 exit</td><td>高</td><td>consumer.c, producer.c</td></tr>
+<tr><td><a href="#Lab7_g3"><code>Lab7_g3</code></a></td><td>Shared Memory 傳整數陣列，consumer 計算</td><td>中高</td><td>consumer.c, producer.c</td></tr>
+<tr><td><a href="#Lab7_g4"><code>Lab7_g4</code></a></td><td>依 Priority 接收 + mq_getattr + O_NONBLOCK</td><td>中</td><td>receiver.c, sender.c</td></tr>
+<tr><td><a href="#Lab7_g5"><code>Lab7_g5</code></a></td><td>結合兩者：shm 放資料、message queue 當通知</td><td>中</td><td>consumer.c, producer.c</td></tr>
+<tr><td><a href="#Lab7_g6"><code>Lab7_g6</code></a></td><td>驗證觀念：kernel persistence 與 MAP_PRIVATE vs MAP_SHARED</td><td>中低</td><td>cleaner.c, reader.c, writer.c</td></tr>
+</table>
+<h2 class="lab">Lab 1:Shell Script</h2>
+<div class="card ex" id="Lab1_ex"><div class="head"><span class="folder">Lab1_ex</span><span class="title">猜數字遊戲 Number Guessing Game</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>ex.sh</code> <span class="note">· 出處:簡報 p.48–50</span></div>
+<ul>
+<li>數字範圍定為 1~10。</li>
+<li>一開始請使用者輸入目標數字。</li>
+<li>不斷縮小範圍,直到玩家猜中目標數字。</li>
+<li>要用 <code>echo</code>、<code>read</code>、loop、conditionals,並用 <strong>function</strong> 詢問猜測的數字。</li>
+</ul></div>
+<div class="card g" id="Lab1_g1"><div class="head"><span class="folder">Lab1_g1</span><span class="title">【原題重現】Number Guessing Game（1~10，範圍逐步縮小）</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>NGG.sh</code> <span class="note">· 出處:review/predict/Lab1_predict.md</span></div>
+<p>寫 <code>NGG.sh</code>：</p>
+<ol>
+<li>先讓使用者輸入目標數字（1~10），超出範圍要重新輸入。</li>
+<li>用 <strong>function</strong> 詢問猜測值，提示目前的範圍。</li>
+<li>猜太大印 <code>Too high!</code>，範圍上限改成 guess-1。猜太小印 <code>Too low</code>，下限改成 guess+1。猜中印 <code>Bingo!</code> 並結束。</li>
+<li>必須用到 echo、read、loop、conditionals、function。</li>
+</ol>
+<pre><code>$ ./NGG.sh
+Please enter the target number between 1 and 10:
+5
+Please enter a number between 1 and 10
+8
+Too high!
+Please enter a number between 1 and 7
+2
+Too low
+Please enter a number between 3 and 7
+...
+Bingo!
+
+</code></pre></div>
+<div class="card g" id="Lab1_g2"><div class="head"><span class="folder">Lab1_g2</span><span class="title">【加料版猜數字】範圍與次數改用參數給，並統計猜了幾次</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>guess.sh</code> <span class="note">· 出處:review/predict/Lab1_predict.md</span></div>
+<p>寫 <code>guess.sh</code>，用法是 <code>./guess.sh min max limit</code>：</p>
+<ol>
+<li>如果參數不是 3 個，印出 <code>Usage: ./guess.sh min max limit</code>（要用 <code>$0</code>）然後結束。</li>
+<li>輸入目標數字後，最多讓玩家猜 <code>limit</code> 次，每次提示 <code>[第幾次/limit]</code> 跟目前的範圍（用 function）。</li>
+<li>猜中時印 <code>Bingo! You got it in N tries.</code>。次數用完時印 <code>Game over! The answer is X.</code>。</li>
+</ol>
+<pre><code>$ ./guess.sh 1 100 5
+Please enter the target number between 1 and 100:
+42
+[1/5] Please enter a number between 1 and 100
+50
+Too high!
+[2/5] Please enter a number between 1 and 49
+25
+Too low
+[3/5] Please enter a number between 26 and 49
+42
+Bingo! You got it in 3 tries.
+
+</code></pre></div>
+<div class="card g" id="Lab1_g3"><div class="head"><span class="folder">Lab1_g3</span><span class="title">【case + function + expr】選單式計算機</span><span class="tag">猜題</span><span class="tag">可能性:中高</span></div>
+<div class="files">檔案:<code>calc.sh</code> <span class="note">· 出處:review/predict/Lab1_predict.md</span></div>
+<p>寫 <code>calc.sh</code>：</p>
+<ol>
+<li>用 function <code>show_menu</code> 印出選單：<code>a) add  s) sub  m) mul  d) div  q) quit</code>。</li>
+<li>讀入選項，用 <strong>case</strong> 分支。a/s/m/d 要再讀「兩個數字」（同一行，用 <code>read x y</code>），然後呼叫 function <code>calc</code> 印出結果。</li>
+<li>除數是 0 時印 <code>Error: divide by zero</code>。輸入不認識的選項時印 <code>Invalid option</code>。輸入 q 時印 <code>Bye!</code> 並結束。</li>
+<li>一定要用 <code>expr</code> 計算。</li>
+</ol>
+<pre><code>$ ./calc.sh
+===== Calculator =====
+a) add  s) sub  m) mul  d) div  q) quit
+Choose:
+m
+Enter two numbers:
+4 6
+4 * 6 = 24
+...
+Choose:
+q
+Bye!
+
+</code></pre></div>
+<div class="card g" id="Lab1_g4"><div class="head"><span class="folder">Lab1_g4</span><span class="title">【Pipe】兩支 script 串接：產生分數 | 判定等第並統計</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>gen.sh</code> <code>grade.sh</code> <span class="note">· 出處:review/predict/Lab1_predict.md</span></div>
+<ol>
+<li><code>gen.sh</code>：用 for 迴圈依序輸出 <code>95 82 60 45 73</code>，每行一個（仿 ex3.sh）。</li>
+<li><code>grade.sh</code>：用 <code>while read</code> 從標準輸入一行一行讀分數（仿 ex4.sh），印出 <code>分數 -&gt; 等第</code>（&gt;=90 A、&gt;=80 B、&gt;=60 C、其他 F）。讀完後印出筆數、及格人數、平均（整數）。</li>
+<li>執行 <code>./gen.sh | ./grade.sh</code>。</li>
+</ol>
+<pre><code>$ ./gen.sh | ./grade.sh
+95 -&gt; A
+82 -&gt; B
+60 -&gt; C
+45 -&gt; F
+73 -&gt; C
+count=5 pass=4 avg=71
+
+</code></pre></div>
+<div class="card g" id="Lab1_g5"><div class="head"><span class="folder">Lab1_g5</span><span class="title">【命令列參數 + expr】三個數字：加總、最大值、階乘</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>nums.sh</code> <span class="note">· 出處:review/predict/Lab1_predict.md</span></div>
+<p>寫 <code>nums.sh</code>，用法 <code>./nums.sh n1 n2 n3</code>：</p>
+<ol>
+<li>第一行印 <code>Welcome to use $0</code>。參數不是 3 個時印 <code>Usage: ...</code> 並結束。</li>
+<li>印出參數個數、三個數的和、最大值。</li>
+<li>用 function <code>fact</code> 搭配 while 迴圈，計算 <code>$1</code> 的階乘。</li>
+</ol>
+<pre><code>$ ./nums.sh 5 3 9
+Welcome to use ./nums.sh
+Hi, we have 3 argument(s): 5 3 9
+sum = 17
+max = 9
+5! = 120
+
+</code></pre></div>
+<div class="card g" id="Lab1_g6"><div class="head"><span class="folder">Lab1_g6</span><span class="title">【字串比較】帳號密碼檢查（最多 3 次）</span><span class="tag">猜題</span><span class="tag">可能性:中低</span></div>
+<div class="files">檔案:<code>login.sh</code> <span class="note">· 出處:review/predict/Lab1_predict.md</span></div>
+<p>寫 <code>login.sh</code>：帳號 <code>admin</code>、密碼 <code>1234</code>。每次在同一行讀入「帳號 密碼」。</p>
+<ul>
+<li>有一個是空的：印 <code>Username and password must not be empty</code></li>
+<li>帳號錯：印 <code>No such user: xxx</code></li>
+<li>密碼錯：印 <code>Wrong password</code></li>
+<li>成功：印 <code>Welcome, admin! (tries: N)</code> 並結束</li>
+<li>失敗 3 次：印 <code>Too many attempts, locked.</code></li>
+</ul>
+<pre><code>$ ./login.sh
+Enter username and password:
+root 1
+No such user: root
+Enter username and password:
+admin 1234
+Welcome, admin! (tries: 2)
+
+</code></pre></div>
+<h2 class="lab">Lab 2:Adding a New System Call</h2>
+<div class="card ex" id="Lab2_ex1"><div class="head"><span class="folder">Lab2_ex1</span><span class="title">Exercise-1(60 分):完成範例,新增 hello syscall</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:簡報 p.41</span></div>
+<p>照簡報步驟新增 <code>sys_hello</code>(<code>SYSCALL_DEFINE0</code>,印出 <code>Hello</code>),編譯安裝 kernel,用 <code>syscall(462)</code> 測試並找助教 demo。</p>
+<p>要改的檔案:</p>
+<ul>
+<li><code>~/linux/hello/hello.c</code>、<code>~/linux/hello/Makefile</code>(<code>obj-y += hello.o</code>)</li>
+<li><code>~/linux/include/linux/syscalls.h</code>:加 <code>asmlinkage long sys_hello(void);</code></li>
+<li><code>~/linux/Kbuild</code>:加 <code>obj-y += hello/</code></li>
+<li><code>~/linux/arch/x86/entry/syscalls/syscall_64.tbl</code>:加 <code>462 common hello sys_hello</code></li>
+</ul></div>
+<div class="card ex" id="Lab2_ex2"><div class="head"><span class="folder">Lab2_ex2</span><span class="title">Exercise-2(40 分):SYSCALL_DEFINE1 印 n 次 hello</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:簡報 p.42–43</span></div>
+<p>改寫範例的 <code>hello.c</code>,使用 <code>SYSCALL_DEFINE1()</code>,讓 syscall 可接受一個參數,參數 = 輸出 hello 的次數。
+例:<code>syscall(462, 3)</code> 即為輸出 3 次 hello。改好後要重新 <code>make -j $(nproc)</code>、<code>sudo make -j $(nproc) modules_install</code>、<code>sudo make install</code>、<code>reboot</code>。</p></div>
+<div class="card g" id="Lab2_g1"><div class="head"><span class="folder">Lab2_g1</span><span class="title">Exercise 2 原題:傳入 n,印 n 次 hello</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:review/predict/Lab2_predict.md</span></div>
+<p><strong>題目</strong>:改寫範例的 <code>hello.c</code>,用 <code>SYSCALL_DEFINE1()</code> 讓 syscall 接收一個參數 n,印出 n 次 hello。執行 <code>syscall(462, 3)</code>。</p>
+<p><strong>預期輸出</strong></p>
+<pre><code>$ ./test
+0
+$ sudo dmesg | tail
+[  554.662505] hello
+[  554.662509] hello
+[  554.662510] hello
+
+</code></pre></div>
+<div class="card g" id="Lab2_g2"><div class="head"><span class="folder">Lab2_g2</span><span class="title">SYSCALL_DEFINE2:兩個參數相加,並回傳結果</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:review/predict/Lab2_predict.md</span></div>
+<p><strong>題目</strong>:改寫 hello syscall,用 <code>SYSCALL_DEFINE2()</code> 接收兩個整數 a、b。在 kernel log 印出 <code>a + b = 結果</code>,並把結果<strong>回傳</strong>給 user program 印出。執行 <code>syscall(462, 3, 5)</code>。</p>
+<p><strong>預期輸出</strong></p>
+<pre><code>$ ./test
+return = 8
+$ sudo dmesg | tail -1
+[  xxx.xxxxxx] 3 + 5 = 8
+
+</code></pre></div>
+<div class="card g" id="Lab2_g3"><div class="head"><span class="folder">Lab2_g3</span><span class="title">用回傳值把計算結果帶回 user space</span><span class="tag">猜題</span><span class="tag">可能性:中~高</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:review/predict/Lab2_predict.md</span></div>
+<p><strong>題目</strong>:<code>syscall(462, n)</code> 要在 kernel 計算 1 + 2 + … + n,每一步都用 <code>printk</code> 印出目前累加值,最後把總和回傳。user 端印出回傳值。以 n = 5 為例。</p>
+<p><strong>預期輸出</strong></p>
+<pre><code>$ ./test
+sum(1..5) = 15
+$ sudo dmesg | tail -5
+[  xxx.xxxxxx] i=1 sum=1
+[  xxx.xxxxxx] i=2 sum=3
+[  xxx.xxxxxx] i=3 sum=6
+[  xxx.xxxxxx] i=4 sum=10
+[  xxx.xxxxxx] i=5 sum=15
+
+</code></pre></div>
+<div class="card g" id="Lab2_g4"><div class="head"><span class="folder">Lab2_g4</span><span class="title">流程/填空/口試題:新增 syscall 要改哪些檔案</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:(無程式碼,見 README) <span class="note">· 出處:review/predict/Lab2_predict.md</span></div>
+<p><strong>題目(筆試或口頭 demo 時問)</strong>:要新增一個名為 <code>hello</code>、編號 462 的 syscall,請寫出:</p>
+<ul>
+<li>(a) 要新增或修改哪些檔案,各加哪一行;</li>
+<li>(b) 從編譯到測試的指令順序;</li>
+<li>(c) <code>./test</code> 和 <code>sudo dmesg | tail</code> 各會看到什麼。</li>
+</ul></div>
+<div class="card g" id="Lab2_g5"><div class="head"><span class="folder">Lab2_g5</span><span class="title">新增第二個 syscall(編號 463):兩數相加</span><span class="tag">猜題</span><span class="tag">可能性:中低</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:review/predict/Lab2_predict.md</span></div>
+<p><strong>題目</strong>:保留原本的 hello(462),再新增一個 <code>add</code> syscall(編號 463),接收兩個整數,在 dmesg 印出 <code>add: 10 + 20 = 30</code> 並回傳和。</p>
+<p><strong>預期輸出</strong></p>
+<pre><code>$ ./test
+hello: 0
+add  : 30
+$ sudo dmesg | tail -2
+[  xxx.xxxxxx] Hello
+[  xxx.xxxxxx] add: 10 + 20 = 30
+
+</code></pre></div>
+<div class="card g" id="Lab2_g6"><div class="head"><span class="folder">Lab2_g6</span><span class="title">參數檢查:不合法時回傳錯誤</span><span class="tag">猜題</span><span class="tag">可能性:低</span></div>
+<div class="files">檔案:<code>hello.c</code> <code>test.c</code> <span class="note">· 出處:review/predict/Lab2_predict.md</span></div>
+<p><strong>題目</strong>:沿用 Ex2(印 n 次 hello)。當 n ≤ 0 或 n &gt; 10 時不印任何東西,回傳 <code>-EINVAL</code>。user 端分別呼叫 <code>syscall(462, 3)</code> 和 <code>syscall(462, -1)</code>,失敗時用 <code>perror</code> 印出原因。</p>
+<p><strong>預期輸出</strong></p>
+<pre><code>$ ./test
+n=3  -&gt; 0
+syscall: Invalid argument
+n=-1 -&gt; -1
+$ sudo dmesg | tail -3
+[  xxx.xxxxxx] hello
+[  xxx.xxxxxx] hello
+[  xxx.xxxxxx] hello
+
+</code></pre>
+<p><code>perror</code> 走 stderr,而且沒有緩衝,所以 terminal 上可能先出現 <code>syscall: Invalid argument</code> 再出現 <code>n=-1 -&gt; -1</code>;重新導向時順序也可能不同。</p></div>
+<h2 class="lab">Lab 3:System Call vs APIs</h2>
+<div class="card ex" id="Lab3_ex"><div class="head"><span class="folder">Lab3_ex</span><span class="title">只用 &lt;unistd.h&gt; 印出 integer</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>ex</code> <code>ex.c</code> <span class="note">· 出處:簡報 p.32</span></div>
+<ul>
+<li>學習目標:了解為何我們比較偏好使用將 system call 包裝後的函式。</li>
+<li>要求:在只使用 <code>&lt;unistd.h&gt;</code> 的情況下印出 integer(助教會檢查有沒有偷用 <code>&lt;stdio.h&gt;</code>)。</li>
+<li>測資:<code>0</code>、<code>100</code>、<code>2147483647</code>、<code>-2147483648</code>。</li>
+</ul></div>
+<div class="card g" id="Lab3_g1"><div class="head"><span class="folder">Lab3_g1</span><span class="title">只用 &lt;unistd.h&gt; 印出字串與整數陣列（含負數）</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>q1.c</code> <span class="note">· 出處:review/predict/Lab3_predict.md</span></div>
+<p>只能 <code>#include &lt;unistd.h&gt;</code>（不可用 <code>&lt;stdio.h&gt;</code>、<code>&lt;string.h&gt;</code>），實作：</p>
+<ul>
+<li><code>my_puts(const char *s)</code>：印出字串（不自動換行）</li>
+<li><code>my_print_int(int a)</code>：印出整數（不換行）</li>
+</ul>
+<p>用它們印出陣列 <code>{3, -15, 0, 2147483647, -2147483648}</code>（以空白分隔），以及元素個數。</p>
+<p><strong>預期輸出</strong></p>
+<pre><code>arr = 3 -15 0 2147483647 -2147483648
+n = 5
+
+</code></pre></div>
+<div class="card g" id="Lab3_g2"><div class="head"><span class="folder">Lab3_g2</span><span class="title">只用 &lt;unistd.h&gt; 從 stdin（fd 0）讀入兩個整數，輸出和</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>q2.c</code> <span class="note">· 出處:review/predict/Lab3_predict.md</span></div>
+<p>只能 <code>#include &lt;unistd.h&gt;</code>。用 <code>read(0, ...)</code> 從鍵盤讀入兩個整數（可能是負數，中間用空白或換行分隔），輸出兩數相加結果。讀取失敗時把錯誤訊息寫到 <strong>stderr（fd 2）</strong>。</p>
+<p><strong>輸入／輸出範例</strong></p>
+<pre><code>$ ./q2
+Input two integers: 3 -5
+sum = -2
+
+$ printf '  -2147483648\n -1\n' | ./q2
+Input two integers: sum = -2147483649
+
+</code></pre></div>
+<div class="card g" id="Lab3_g3"><div class="head"><span class="folder">Lab3_g3</span><span class="title">只用 system call 複製檔案（自製 cp）</span><span class="tag">猜題</span><span class="tag">可能性:中高</span></div>
+<div class="files">檔案:<code>q3.c</code> <span class="note">· 出處:review/predict/Lab3_predict.md</span></div>
+<p>寫 <code>mycp</code>，用法 <code>./mycp &lt;src&gt; &lt;dst&gt;</code>。只能用 <code>open/read/write/close</code>（<code>&lt;unistd.h&gt;</code>、<code>&lt;fcntl.h&gt;</code>），不能用 <code>&lt;stdio.h&gt;</code>。</p>
+<ul>
+<li>目的檔不存在就建立，權限 <strong>0644</strong>；已存在則先清空。</li>
+<li>複製完印出 <code>copied N bytes</code>。</li>
+<li>來源檔開不起來要印錯誤訊息到 stderr 並 <code>return 1</code>。</li>
+</ul>
+<p><strong>輸入／輸出範例</strong></p>
+<pre><code>$ printf 'Hello World\nline2\n' &gt; src.txt
+$ ./mycp src.txt dst.txt
+copied 18 bytes
+$ cat dst.txt
+Hello World
+line2
+$ ls -l dst.txt
+-rw-r--r-- 1 user user 18 ... dst.txt
+
+</code></pre></div>
+<div class="card g" id="Lab3_g4"><div class="head"><span class="folder">Lab3_g4</span><span class="title">用 open() 指定權限建立檔案，把整數寫進檔案</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>q4.c</code> <span class="note">· 出處:review/predict/Lab3_predict.md</span></div>
+<p>只用 <code>&lt;unistd.h&gt;</code>、<code>&lt;fcntl.h&gt;</code>：建立 <code>score.txt</code>，權限必須是 <strong><code>rw-r-----</code>（owner 讀寫、group 只讀、other 無）</strong>，把 1~5 的平方一行一個寫進檔案。完成後螢幕印 <code>done</code>，並用 <code>ls -l</code>、<code>cat</code> 給助教看。</p>
+<p><strong>輸入／輸出範例</strong></p>
+<pre><code>$ ./q4
+done
+$ ls -l score.txt
+-rw-r----- 1 user user 12 ... score.txt
+$ cat score.txt
+1
+4
+9
+16
+25
+
+</code></pre>
+<p>（延伸口試題：<code>chmod 0244 score.txt</code> 之後 <code>cat</code> 會怎樣？→ <code>Permission denied</code>，因為 owner 只剩 w，p.12 示範過。）</p></div>
+<div class="card g" id="Lab3_g5"><div class="head"><span class="folder">Lab3_g5</span><span class="title">write() vs fwrite() 一次寫 1 byte，比較時間並用 strace 觀察</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>q5_fwrite.c</code> <code>q5_write.c</code> <span class="note">· 出處:review/predict/Lab3_predict.md</span></div>
+<p>仿照 example4，但改成「<strong>寫</strong>」：分別用 <code>write()</code> 和 <code>fwrite()</code> 一次寫 1 byte、共寫 1MB（1048576 次）到檔案，印出花費秒數；再用 <code>strace -c</code> 比較 <code>write</code> system call 的次數，並解釋原因。</p>
+<p><strong>預期結果</strong></p>
+<pre><code>$ ./q5_write
+0.463326
+$ ./q5_fwrite
+0.013798
+$ strace -c ./q5_write    → write 呼叫 1048577 次
+$ strace -c ./q5_fwrite   → write 呼叫 257 次
+
+</code></pre></div>
+<div class="card g" id="Lab3_g6"><div class="head"><span class="folder">Lab3_g6</span><span class="title">用 C library（fopen/fread/fwrite/fclose）改寫檔案複製</span><span class="tag">猜題</span><span class="tag">可能性:低</span></div>
+<div class="files">檔案:<code>q6.c</code> <span class="note">· 出處:review/predict/Lab3_predict.md</span></div>
+<p>把第 3 題的 mycp 改用 <code>fopen/fread/fwrite/fclose</code> 實作，開檔失敗用 <code>perror</code> 印錯誤並 <code>exit(1)</code>。完成後回答：兩個版本用 <code>strace -c</code> 看，誰的 read/write 次數多？</p>
+<p><strong>輸入／輸出範例</strong></p>
+<pre><code>$ ./q6 big.bin d6.bin
+copied 10000 bytes
+
+</code></pre></div>
+<h2 class="lab">Lab 4:Library</h2>
+<div class="card ex" id="Lab4_ex"><div class="head"><span class="folder">Lab4_ex</span><span class="title">Exercise 1 static library + Exercise 2 shared library(sort)</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>ex1</code> <code>ex1.c</code> <code>ex_dy</code> <code>exlib.a</code> <code>exlib.h</code> <code>exlib.so</code> <code>sort.c</code> <code>sort.o</code> <span class="note">· 出處:簡報 p.14–15、p.26–27</span></div>
+<p><strong>Exercise 1</strong></p>
+<ul>
+<li><code>sort.c</code>:建立 sort 函式,參數接受陣列的位址,將陣列內的整數由小排到大。</li>
+<li><code>exercise.c</code>(本資料夾為 <code>ex1.c</code>):建立長度 5 的陣列,放入 5 個不重複隨機整數,先印出 sort 前的值,再呼叫 sort 並印出結果。</li>
+<li>將 <code>sort.o</code> 加入 <code>exlib.a</code>,用 gcc 把 exercise.c 與 exlib.a 輸出成 <code>exercise1</code>(本資料夾為 <code>ex1</code>)。</li>
+</ul>
+<p><strong>Exercise 2</strong></p>
+<ul>
+<li>用同樣兩支程式,改用 shared library 編譯(本資料夾為 <code>exlib.so</code>、<code>ex_dy</code>),成功後用 <code>ls -l</code> 比較檔案大小。</li>
+</ul></div>
+<div class="card g" id="Lab4_g1"><div class="head"><span class="folder">Lab4_g1</span><span class="title">降冪排序 library（10 個不重複亂數）</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>exercise.c</code> <code>exlib.h</code> <code>sort.c</code> <span class="note">· 出處:review/predict/Lab4_predict.md</span></div>
+<ol>
+<li><code>sort.c</code>：建立 <code>sort_desc</code> 函式，參數接受<strong>陣列位址與長度</strong>，將陣列由<strong>大到小</strong>排序。</li>
+<li><code>exercise.c</code>：產生 <strong>10 個不重複</strong>、範圍 1~100 的隨機整數，印出排序前／後。</li>
+<li>將 <code>sort.o</code> 加入 <code>exlib.a</code>，編成 <code>exercise1</code>（static）。</li>
+<li>用 shared library 方式編成 <code>exercise2</code>，執行成功後用 <code>ls -l</code> 比較檔案大小。</li>
+</ol>
+<p>輸出範例：</p>
+<pre><code>$ ./exercise1
+Before sort: 61 67 88 54 4 30 36 8 84 71
+After sort: 88 84 71 67 61 54 36 30 8 4
+
+</code></pre></div>
+<div class="card g" id="Lab4_g2"><div class="head"><span class="folder">Lab4_g2</span><span class="title">統計函式庫 max / min / average（多個 .o 包成一個 library）</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>average.c</code> <code>main.c</code> <code>max.c</code> <code>min.c</code> <code>mylib.h</code> <span class="note">· 出處:review/predict/Lab4_predict.md</span></div>
+<ol>
+<li>撰寫 <code>max.c</code>、<code>min.c</code>、<code>average.c</code> 三個檔案，各自實作一個函式，參數為陣列位址與長度；共用標頭 <code>mylib.h</code>。</li>
+<li><code>main.c</code> 產生 5 個不重複隨機整數（1~100），印出陣列、最大值、最小值、平均（小數點後 2 位）。</li>
+<li>把三個 <code>.o</code> 包成 <code>mylib.a</code>，編成 <code>stat_static</code>；再包成 <code>mylib.so</code>，編成 <code>stat_dynamic</code>。</li>
+<li><code>ls -l</code> 比較兩個執行檔大小，並用 <code>ldd</code> 確認 <code>stat_dynamic</code> 用到 <code>mylib.so</code>。</li>
+</ol>
+<p>輸出範例：</p>
+<pre><code>Array: 94 75 82 29 9
+Max = 94
+Min = 9
+Average = 57.80
+
+</code></pre></div>
+<div class="card g" id="Lab4_g3"><div class="head"><span class="folder">Lab4_g3</span><span class="title">原題重現 + ldd 驗證 + 刪除 library 實驗</span><span class="tag">猜題</span><span class="tag">可能性:中高</span></div>
+<div class="files">檔案:<code>exercise.c</code> <code>exlib.h</code> <code>sort.c</code> <span class="note">· 出處:review/predict/Lab4_predict.md</span></div>
+<ol>
+<li>完成 Exercise 1、Exercise 2（sort 由小到大、5 個不重複亂數，<code>exercise1</code> / <code>exercise2</code>）。</li>
+<li>第一次執行 <code>exercise2</code> 時要出現「找不到 shared library」的錯誤，並修正它。</li>
+<li>分別對 <code>exercise1</code>、<code>exercise2</code> 執行 <code>ldd</code>，說明差異。</li>
+<li>把 <code>exlib.a</code>、<code>exlib.so</code>（含 /lib 裡那份）移走，再執行兩個程式，說明結果。</li>
+</ol>
+<p>輸出範例：</p>
+<pre><code>$ ./exercise1                 ← exlib.a 已移走，仍可執行
+Before sort: 60 52 99 95 35
+After sort: 35 52 60 95 99
+$ ./exercise2                 ← /lib/exlib.so 移走後失敗
+./exercise2: error while loading shared libraries: exlib.so: cannot open shared object file: No such file or directory
+
+</code></pre></div>
+<div class="card g" id="Lab4_g4"><div class="head"><span class="folder">Lab4_g4</span><span class="title">更新 library 後觀察 static / dynamic 行為差異</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>exercise.c</code> <code>exlib.h</code> <code>sort_v1.c</code> <code>sort_v2.c</code> <span class="note">· 出處:review/predict/Lab4_predict.md</span></div>
+<ol>
+<li>先用 v1 的 <code>sort.c</code>（由小到大，排序前印 <code>[exlib v1] ascending</code>）建出 <code>exercise1</code>（static）和 <code>exercise2</code>（dynamic）。</li>
+<li>把 <code>sort.c</code> 改成 v2（由大到小，印 <code>[exlib v2] descending</code>），<strong>只重建 <code>exlib.a</code>、<code>exlib.so</code>，不要重新編譯 exercise.c</strong>。</li>
+<li>再執行兩個程式，觀察差異並說明原因；最後重新連結 <code>exercise1</code> 讓它也變成 v2。</li>
+</ol>
+<p>輸出範例（更新 library 後、未重新連結）：</p>
+<pre><code>$ ./exercise1
+Before sort: 34 66 59 54 69
+[exlib v1] ascending
+After sort: 34 54 59 66 69
+$ ./exercise2
+Before sort: 34 66 59 54 69
+[exlib v2] descending
+After sort: 69 66 59 54 34
+
+</code></pre></div>
+<div class="card g" id="Lab4_g5"><div class="head"><span class="folder">Lab4_g5</span><span class="title">擴充投影片範例 — 四則運算 library</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>add.c</code> <code>div.c</code> <code>lib.h</code> <code>main.c</code> <code>mul.c</code> <code>sub.c</code> <span class="note">· 出處:review/predict/Lab4_predict.md</span></div>
+<p>把 p.5 範例改成兩個參數的四則運算：<code>add.c</code>、<code>sub.c</code>、<code>mul.c</code>、<code>div.c</code>（函式 <code>add / sub / mul / divide</code>），共用 <code>lib.h</code>。<code>main.c</code> 讀入兩個整數並印出四則運算結果（除法到小數點後 2 位，除數為 0 要印提示）。分別以 static（<code>calc_static</code>）、dynamic（<code>calc_dynamic</code>）編譯並 <code>ls -l</code>。</p>
+<p>輸出範例：</p>
+<pre><code>Input two integers: 7 2
+7 + 2 = 9
+7 - 2 = 5
+7 * 2 = 14
+7 / 2 = 3.50
+
+</code></pre></div>
+<div class="card g" id="Lab4_g6"><div class="head"><span class="folder">Lab4_g6</span><span class="title">字串函式庫 reverse + to_upper</span><span class="tag">猜題</span><span class="tag">可能性:低</span></div>
+<div class="files">檔案:<code>main.c</code> <code>reverse.c</code> <code>strlib.h</code> <code>upper.c</code> <span class="note">· 出處:review/predict/Lab4_predict.md</span></div>
+<p>撰寫 <code>reverse.c</code>（將字串反轉）與 <code>upper.c</code>（將小寫轉大寫），共用 <code>strlib.h</code>，打包成 <code>strlib.a</code> 與 <code>strlib.so</code>。<code>main.c</code> 讀入一行字串，依序印出原字串、反轉後、轉大寫後。分別編成 <code>str_static</code>、<code>str_dynamic</code>，<code>ls -l</code> 比較。</p>
+<p>輸出範例：</p>
+<pre><code>Input a string: Hello OS Lab4
+Original : Hello OS Lab4
+Reverse  : 4baL SO olleH
+Upper    : 4BAL SO OLLEH
+
+</code></pre></div>
+<h2 class="lab">Lab 5:Kernel Module</h2>
+<div class="card ex" id="Lab5_ex"><div class="head"><span class="folder">Lab5_ex</span><span class="title">date2timestamp + myage</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>Module.symvers</code> <code>d2ts.c</code> <code>d2ts.ko</code> <code>d2ts.mod</code> <code>d2ts.mod.c</code> <code>d2ts.mod.o</code> <code>d2ts.o</code> <code>modules.order</code> <code>myage.c</code> <code>myage.ko</code> <code>myage.mod</code> <code>myage.mod.c</code> <code>myage.mod.o</code> <code>myage.o</code> <span class="note">· 出處:簡報 p.31–35</span></div>
+<p><strong>date2timestamp</strong>(本資料夾為 <code>d2ts.c</code>)</p>
+<ul>
+<li>module parameters:<code>year</code>、<code>month</code>、<code>date</code>;export symbol:<code>ts</code>。</li>
+<li>輸入出生年月日,印出該日期的時間戳記 <code>ts</code>,並提供給其他模組使用。</li>
+<li>若輸入無效日期,顯示錯誤訊息並終止安裝(<code>printk(KERN_ERR "Invalid argument(s).\n"); return -EINVAL;</code>)。</li>
+</ul>
+<p><strong>myage</strong></p>
+<ul>
+<li>取得當前時間戳記,與 <code>ts</code> 相減,轉成年跟日,輸出你已經活多久;相減小於 0 要提示。</li>
+<li>提示:<code>#include &lt;linux/time64.h&gt;</code>,<code>mktime64(year, month, date, 0, 0, 0);</code> 時間戳精度為秒。</li>
+</ul>
+<p>(本資料夾的答案多了一個簡報沒要求的 <code>is_adult()</code>,是自己練習的延伸。)</p></div>
+<div class="card g" id="Lab5_g1"><div class="head"><span class="folder">Lab5_g1</span><span class="title">倒數計時</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>countdown.c</code> <code>deadline.c</code> <span class="note">· 出處:review/predict/Lab5_predict.md</span></div>
+<p><strong>題目敘述</strong>
+請撰寫兩個 kernel module：</p>
+<ul>
+<li><code>deadline</code>：module parameters <code>year</code>、<code>month</code>、<code>date</code>（預設 2026/12/25），export symbol <code>ts</code>。印出該日期的時間戳記；若日期無效，印出錯誤訊息並終止安裝。</li>
+<li><code>countdown</code>：取得當前時間戳記，算出<strong>距離 deadline 還剩幾天幾時幾分幾秒</strong>；若該日期已經過了，要提示「已經過了幾天」。</li>
+</ul>
+<pre><code class="language-bash">sudo insmod deadline.ko year=2026 month=2 date=29     # 2026 不是閏年 → 失敗
+sudo insmod deadline.ko year=2026 month=12 date=25
+sudo insmod countdown.ko
+sudo dmesg | tail -4
+
+</code></pre>
+<p>預期輸出：</p>
+<pre><code>insmod: ERROR: could not insert module deadline.ko: Invalid parameters
+[...] Invalid argument(s).
+[...] deadline insert successfully! 2026/12/25 ts=1798156800
+[...] countdown insert successfully!
+[...] There are 57 days 22 hours 0 minutes 0 seconds left!
+
+</code></pre>
+<p>日期已過（<code>year=2026 month=10 date=1</code>）時：<code>The target date has passed 27 days 2 hours ago!</code></p></div>
+<div class="card g" id="Lab5_g2"><div class="head"><span class="folder">Lab5_g2</span><span class="title">加上時分秒：活了幾年幾天幾時幾分幾秒</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>date2timestamp.c</code> <code>myage.c</code> <span class="note">· 出處:review/predict/Lab5_predict.md</span></div>
+<p><strong>題目敘述</strong></p>
+<ul>
+<li><code>date2timestamp</code>：參數改成 <code>year month date hour minute second</code> 六個（hour 0~23、minute／second 0~59），超出範圍視為無效 → 錯誤訊息＋終止安裝；export <code>ts</code>。</li>
+<li><code>myage</code>：輸出你活了「X 年 Y 天 Z 時 W 分 S 秒」（一年以 365 天計）；若 ts 在未來要提示。</li>
+</ul>
+<pre><code class="language-bash">sudo insmod date2timestamp.ko year=2001 month=8 date=1 hour=24             # hour 超出範圍
+sudo insmod date2timestamp.ko year=2001 month=8 date=1 hour=13 minute=30 second=5
+sudo insmod myage.ko
+sudo dmesg | tail -4
+
+</code></pre>
+<p>預期輸出：</p>
+<pre><code>insmod: ERROR: could not insert module date2timestamp.ko: Invalid parameters
+[...] Invalid argument(s).
+[...] date2timestamp insert successfully! ts=996672605
+[...] myage insert successfully!
+[...] You have lived 25 years 93 days 12 hours 29 minutes 55 seconds!
+
+</code></pre>
+<p>ts 在未來（例如 <code>year=2026 month=10 date=28 hour=3</code>）：<code>You are not born yet! (diff=-3600)</code></p></div>
+<div class="card g" id="Lab5_g3"><div class="head"><span class="folder">Lab5_g3</span><span class="title">Export 函式：兩個日期相差幾天</span><span class="tag">猜題</span><span class="tag">可能性:中高</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>datelib.c</code> <code>daydiff.c</code> <span class="note">· 出處:review/predict/Lab5_predict.md</span></div>
+<p><strong>題目敘述</strong></p>
+<ul>
+<li><code>datelib</code>：不需要參數。export 兩個<strong>函式</strong>：<code>int is_valid_date(int y, int m, int d)</code>（有效回傳 1，否則 0）、<code>time64_t date2ts(int y, int m, int d)</code>（回傳時間戳記）。</li>
+<li><code>daydiff</code>：參數 <code>year1 month1 date1 year2 month2 date2</code>，呼叫 datelib 的函式驗證兩個日期（任一無效 → 錯誤訊息＋終止安裝），印出兩個日期相差幾天（日期 2 早於日期 1 時為負數）。</li>
+</ul>
+<pre><code class="language-bash">sudo insmod daydiff.ko                      # 先裝 daydiff → 失敗
+sudo insmod datelib.ko
+sudo insmod daydiff.ko year1=2001 month1=8 date1=1 year2=2026 month2=10 date2=28
+sudo dmesg | tail -3
+sudo rmmod datelib                          # 故意先拆 datelib → 失敗
+
+</code></pre>
+<p>預期輸出：</p>
+<pre><code>insmod: ERROR: could not insert module daydiff.ko: Unknown symbol in module
+[...] datelib insert successfully!
+[...] daydiff insert successfully!
+[...] From 2001/8/1 to 2026/10/28: 9219 days
+rmmod: ERROR: Module datelib is in use by: daydiff
+
+</code></pre>
+<p>其他測資：<code>2024/1/1 → 2025/1/1：366 days</code>（閏年）、<code>2026/12/25 → 2026/10/28：-58 days</code>、<code>year1=2025 month1=2 date1=29</code> → <code>Invalid argument(s).</code></p></div>
+<div class="card g" id="Lab5_g4"><div class="head"><span class="folder">Lab5_g4</span><span class="title">精確足歲＋下次生日倒數</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>birthday.c</code> <code>date2timestamp.c</code> <span class="note">· 出處:review/predict/Lab5_predict.md</span></div>
+<p><strong>題目敘述</strong>
+exercise 的 myage 用「365 天＝1 年」近似，會因閏日而偏差。請改寫：</p>
+<ul>
+<li><code>date2timestamp</code>：同原題（參數 year/month/date、export <code>ts</code>），但<strong>另外把 <code>year</code>、<code>month</code>、<code>date</code> 也 export</strong>。</li>
+<li><code>birthday</code>：算出真正的「足歲」與「距離上次生日幾天」，以及「下次生日還有幾天幾小時」。ts 在未來時要提示。只能用 <code>mktime64</code>。</li>
+</ul>
+<pre><code class="language-bash">sudo insmod date2timestamp.ko year=2001 month=8 date=1
+sudo insmod birthday.ko
+sudo dmesg | tail -3
+
+</code></pre>
+<p>預期輸出：</p>
+<pre><code>[...] birthday insert successfully!
+[...] You are 25 years old, 88 days since your last birthday.
+[...] Your next birthday is in 276 days 22 hours.
+
+</code></pre>
+<p>對照：原本 myage（365 天近似）會印 <code>25 years and 94 days</code>，差的 6 天就是 2004、2008、2012、2016、2020、2024 這 6 個閏日。
+其他測資：<code>2005/10/29</code> → <code>20 years old, 364 days since…</code>、<code>next birthday is in 0 days 22 hours</code>；<code>2004/2/29</code> → <code>22 years old, 241 days</code>、<code>next … 123 days 22 hours</code>（平年把 3/1 當生日）。</p></div>
+<div class="card g" id="Lab5_g5"><div class="head"><span class="folder">Lab5_g5</span><span class="title">出生那天是星期幾</span><span class="tag">猜題</span><span class="tag">可能性:中低</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>date2timestamp.c</code> <code>weekday.c</code> <span class="note">· 出處:review/predict/Lab5_predict.md</span></div>
+<p><strong>題目敘述</strong></p>
+<ul>
+<li><code>date2timestamp</code>：同原題。</li>
+<li><code>weekday</code>：用 <code>ts</code> 算出生日是星期幾（已知 1970/1/1 是星期四），並印出活了幾天、合幾週又幾天。</li>
+</ul>
+<pre><code class="language-bash">sudo insmod date2timestamp.ko year=2001 month=8 date=1
+sudo insmod weekday.ko
+sudo dmesg | tail -3
+
+</code></pre>
+<p>預期輸出：</p>
+<pre><code>[...] weekday insert successfully!
+[...] You were born on Wednesday.
+[...] You have lived 9219 days = 1317 weeks and 0 days.
+
+</code></pre>
+<p><code>year=1970 month=1 date=1</code> → <code>Thursday</code>、<code>20754 days = 2964 weeks and 6 days</code>。（今天 2026/10/28 是星期三，和 2001/8/1 同星期，所以剛好整週。）</p></div>
+<div class="card g" id="Lab5_g6"><div class="head"><span class="folder">Lab5_g6</span><span class="title">單一 module：該年第幾天、是否閏年</span><span class="tag">猜題</span><span class="tag">可能性:低</span></div>
+<div class="files">檔案:<code>Makefile</code> <code>dayofyear.c</code> <span class="note">· 出處:review/predict/Lab5_predict.md</span></div>
+<p><strong>題目敘述</strong>
+撰寫一個 kernel module <code>dayofyear</code>，參數 <code>year month date</code>。若日期無效，顯示錯誤訊息並終止安裝；否則印出該日期是當年的第幾天、該年是否閏年、今年還剩幾天。</p>
+<pre><code class="language-bash">sudo insmod dayofyear.ko year=2100 month=2 date=29     # 2100 不是閏年
+sudo insmod dayofyear.ko year=2024 month=8 date=1
+sudo dmesg | tail -3
+modinfo dayofyear.ko | grep parm
+
+</code></pre>
+<p>預期輸出：</p>
+<pre><code>insmod: ERROR: could not insert module dayofyear.ko: Invalid parameters
+[...] Invalid argument(s).
+[...] dayofyear insert successfully!
+[...] 2024/8/1 is day 214 of 2024 (a leap year), 152 days left.
+parm:           year:year (int)
+parm:           month:month (int)
+parm:           date:date (int)
+
+</code></pre>
+<p>其他測資：<code>2000/2/29</code> → <code>day 60 … (a leap year), 306 days left</code>；<code>2026/10/28</code> → <code>day 301 … (not a leap year), 64 days left</code>。</p></div>
+<h2 class="lab">Lab 6:Process Control</h2>
+<div class="card ex" id="Lab6_ex1"><div class="head"><span class="folder">Lab6_ex1</span><span class="title">Exercise 1(40 分):fork 後 global / local 變數</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>ex1</code> <code>ex1.c</code> <span class="note">· 出處:簡報 p.22–24</span></div>
+<ul>
+<li>宣告一個 global 變數和一個 local 變數,初值都是 10。</li>
+<li>在螢幕上印出兩個變數的值(附 process id 與 parent 的 id)。</li>
+<li>建立一個 child process,印出兩個變數,然後把兩個變數遞增。</li>
+<li>最後兩個 process 都印出 global 與 local 的值,附自己的 PID 與 PPID。</li>
+<li>(對照 p.24 Result:只有 child 遞增,parent 印出的仍是 10。)</li>
+</ul></div>
+<div class="card ex" id="Lab6_ex2"><div class="head"><span class="folder">Lab6_ex2</span><span class="title">Exercise 2(50 分):5 個 process 的樹</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>ex2</code> <code>ex2.c</code> <span class="note">· 出處:簡報 p.25–27</span></div>
+<ul>
+<li>寫一個程式建立 5 個 process,形成指定的樹狀結構(A → B、D、E;B → C)。</li>
+<li>每個 process 印出自己的 process id 與 parent 的 process id。</li>
+<li>有 child 的 process 必須依 child 的數目呼叫相同次數的 <code>wait()</code>,等所有 child 結束。</li>
+</ul></div>
+<div class="card g" id="Lab6_g1"><div class="head"><span class="folder">Lab6_g1</span><span class="title">換一棵 process tree（6 個 process）</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>q1_tree.c</code> <span class="note">· 出處:review/predict/Lab6_predict.md</span></div>
+<p><strong>題目</strong>：寫一個程式建立 6 個 process，形成下面這棵樹。每個 process 印出自己的 PID 和 parent 的 PID。有 child 的 process 必須依照 child 的數目呼叫相同次數的 <code>wait()</code>，等所有 child 結束後才印自己的資料。</p>
+<pre><code>            A
+          /   \
+         B     C
+        / \     \
+       D   E     F
+
+</code></pre>
+<p>輸出範例（PID 會不同，順序可能不同，但 parent 一定在自己所有 child 之後）：</p>
+<pre><code>Child process D -   PID: 1891     , PPID: 1889
+Child process E -   PID: 1892     , PPID: 1889
+Child process F -   PID: 1893     , PPID: 1890
+Child process B -   PID: 1889     , PPID: 1888
+Child process C -   PID: 1890     , PPID: 1888
+Parent process A -  PID: 1888     , PPID: 1887
+
+</code></pre></div>
+<div class="card g" id="Lab6_g2"><div class="head"><span class="folder">Lab6_g2</span><span class="title">Ex1 改成 parent 和 child 都遞增，加上 heap 變數</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>q2_vars.c</code> <span class="note">· 出處:review/predict/Lab6_predict.md</span></div>
+<p><strong>題目</strong>：宣告一個 global 變數、一個 local 變數，以及一個用 <code>malloc</code> 配置的 heap 變數，初值都是 10，先印一次（附 PID、PPID）。fork 後：</p>
+<ul>
+<li>child 先印一次，然後三個變數各 <strong>+1</strong>，再印一次。</li>
+<li>parent 用 <code>wait()</code> 等 child 結束，印一次，然後三個變數各 <strong>+5</strong>，再印一次。</li>
+<li>（加分）兩個 process 都印出三個變數的位址。</li>
+</ul>
+<p>輸出範例：</p>
+<pre><code>Initial value:
+PID: 2009     ,PPID: 1985     , Global: 10   , Local: 10   , Heap: 10
+------------------------------------------------------------------
+Child process:
+PID: 2010     ,PPID: 2009     , Global: 10   , Local: 10   , Heap: 10
+Child process after increment:
+PID: 2010     ,PPID: 2009     , Global: 11   , Local: 11   , Heap: 11
+Child  &amp;global=0x55cbe1fdf010  &amp;local=0x7fffdc8a4528  heap=0x55cbfa0352a0
+Parent process:
+PID: 2009     ,PPID: 1985     , Global: 10   , Local: 10   , Heap: 10
+Parent process after increment:
+PID: 2009     ,PPID: 1985     , Global: 15   , Local: 15   , Heap: 15
+Parent &amp;global=0x55cbe1fdf010  &amp;local=0x7fffdc8a4528  heap=0x55cbfa0352a0
+------------------------------------------------------------------
+
+</code></pre></div>
+<div class="card g" id="Lab6_g3"><div class="head"><span class="folder">Lab6_g3</span><span class="title">fork–exec，child 用 execlp 執行 ls -l，parent 等待後印訊息</span><span class="tag">猜題</span><span class="tag">可能性:中高</span></div>
+<div class="files">檔案:<code>q3_exec.c</code> <span class="note">· 出處:review/predict/Lab6_predict.md</span></div>
+<p><strong>題目</strong>：parent fork 出一個 child。child 印出自己的 PID、PPID，然後用 <code>execlp</code> 執行 <code>ls -l</code>。parent 用 <code>wait()</code> 等 child 結束後，印出自己的 PID、child 的 PID，以及 <code>wait()</code> 的回傳值。</p>
+<p>輸出範例：</p>
+<pre><code>Parent start: PID = 2116
+Child: PID = 2118, PPID = 2116, now exec &quot;ls -l&quot;
+total 0
+-rw-r--r-- 1 root root 0 Oct 27 12:02 a.txt
+-rw-r--r-- 1 root root 0 Oct 27 12:02 b.c
+
+------ this is parent process ------
+Pid : 2116  child pid : 2118    wait() returned : 2118
+------------------------------------
+
+</code></pre></div>
+<div class="card g" id="Lab6_g4"><div class="head"><span class="folder">Lab6_g4</span><span class="title">用迴圈 fork N 個 child（扇形樹），parent wait N 次並印出回收的 child PID</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>q4_fan.c</code> <span class="note">· 出處:review/predict/Lab6_predict.md</span></div>
+<p><strong>題目</strong>：parent 用 for 迴圈產生 3 個 child。每個 child 印出「I am child process i.」以及 PID、PPID 後結束。parent 呼叫 3 次 <code>wait()</code>，每次印出結束的是哪一個 child（wait 的回傳值），最後印出自己的資料。</p>
+<pre><code>          P
+        / | \
+      C1  C2  C3
+
+</code></pre>
+<p>輸出範例：</p>
+<pre><code>I am child process 2.   Pid: 2135   Parent Pid: 2133
+I am child process 1.   Pid: 2134   Parent Pid: 2133
+I am child process 3.   Pid: 2136   Parent Pid: 2133
+Parent: child 2134 terminated
+Parent: child 2135 terminated
+Parent: child 2136 terminated
+I'm parent process. Pid: 2133   Parent Pid: 2090
+
+</code></pre></div>
+<div class="card g" id="Lab6_g5"><div class="head"><span class="folder">Lab6_g5</span><span class="title">鏈狀 process tree A → B → C → D</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>q5_chain.c</code> <span class="note">· 出處:review/predict/Lab6_predict.md</span></div>
+<p><strong>題目</strong>：建立 4 個 process，形成一條鏈：A 產生 B，B 產生 C，C 產生 D。每個 process 都要先 wait 自己的 child，再印出自己的名稱、PID、PPID。</p>
+<pre><code>A
+└── B
+    └── C
+        └── D
+
+</code></pre>
+<p>輸出範例（一定是由下往上印）：</p>
+<pre><code>Process D - PID: 1915     , PPID: 1914
+Process C - PID: 1914     , PPID: 1913
+Process B - PID: 1913     , PPID: 1912
+Process A - PID: 1912     , PPID: 1887
+
+</code></pre></div>
+<div class="card g" id="Lab6_g6"><div class="head"><span class="folder">Lab6_g6</span><span class="title">fork() 連續呼叫 n 次，總共有幾個 process？</span><span class="tag">猜題</span><span class="tag">可能性:低～中</span></div>
+<div class="files">檔案:<code>q6_count.c</code> <span class="note">· 出處:review/predict/Lab6_predict.md</span></div>
+<p><strong>題目</strong>：執行下面的程式，回答總共會印出幾行？畫出 process tree。（或者反過來：寫程式讓每個 process 都印出 PID/PPID，再數一數總共有幾個。）</p>
+<pre><code class="language-c">for (i = 0; i &lt; 3; i++)
+    fork();
+printf(&quot;PID: %-8d , PPID: %d\n&quot;, getpid(), getppid());
+
+</code></pre>
+<p><strong>答案</strong>：每呼叫一次 fork，process 數就乘以 2，所以總共 <strong>2³ = 8</strong> 個 process，印 8 行。樹的形狀（P0 是原始 process）：</p>
+<pre><code>P0 ─┬─ P1 ─┬─ P3 ── P7
+    │      └─ P4
+    ├─ P2 ── P5
+    └─ P6
+（P0 有 3 個 child，第一個 child 有 2 個，依此類推：3, 2, 1, 1, 0, 0, 0, 0）
+
+</code></pre></div>
+<h2 class="lab">Lab 7:IPC(Message Queue / Shared Memory)</h2>
+<div class="card ex" id="Lab7_ex1"><div class="head"><span class="folder">Lab7_ex1</span><span class="title">Exercise-Lab1(50 分):Message Queue sender / receiver</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>receiver</code> <code>receiver.c</code> <code>sender</code> <code>sender.c</code> <span class="note">· 出處:Lab7-1.pdf p.22–24</span></div>
+<ul>
+<li><code>sender.c</code>:建立 message queue;使用者可反覆輸入字串,直到輸入 <code>"exit"</code>;把訊息送到 message queue。</li>
+<li><code>receiver.c</code>:反覆從 message queue 接收訊息並顯示在螢幕上;最後 close &amp; unlink message queue。</li>
+<li>可能用到:<code>fgets(buf, BUFSIZ, stdin)</code>、<code>strcmp(message, "hello")</code>。</li>
+</ul></div>
+<div class="card ex" id="Lab7_ex2"><div class="head"><span class="folder">Lab7_ex2</span><span class="title">Exercise 2(50 分):Shared Memory producer / consumer</span><span class="tag">課堂 Exercise</span><span class="tag">可能性:原題</span></div>
+<div class="files">檔案:<code>consumer</code> <code>consumer.c</code> <code>producer</code> <code>producer.c</code> <span class="note">· 出處:Lab7-2.pdf p.26–28</span></div>
+<ul>
+<li><code>producer.c</code>:建立 shared memory;使用者輸入訊息寫進 shared memory。</li>
+<li><code>consumer.c</code>:把 shared memory 的內容印在螢幕上。</li>
+<li>編譯要加 <code>-lrt</code>。</li>
+</ul></div>
+<div class="card g" id="Lab7_g1"><div class="head"><span class="folder">Lab7_g1</span><span class="title">雙向 Message Queue：計算機 client / server</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>client.c</code> <code>server.c</code> <span class="note">· 出處:review/predict/Lab7_predict.md</span></div>
+<p>寫兩支程式：</p>
+<ul>
+<li><code>client.c</code>：建立兩個 message queue（請求用、回應用）。使用者反覆輸入 <code>a op b</code>（op 為 <code>+ - * /</code>），送給 server，然後<strong>等 server 回傳結果</strong>並印出；輸入 <code>exit</code> 時把 <code>exit</code> 也送給 server，然後結束。</li>
+<li><code>server.c</code>：反覆接收運算式，計算後把結果送回 client，並在自己的畫面印出；收到 <code>exit</code> 時結束，<strong>close 並 unlink 兩個 queue</strong>。</li>
+</ul>
+<p>輸出範例（終端機 A：server 先執行）：</p>
+<pre><code>$ ./server
+Server is waiting...
+received: 3 + 5 -&gt; 8
+received: 10 * 4 -&gt; 40
+received: 7 / 0 -&gt; invalid input
+received: 100 - 1 -&gt; 99
+Server exit.
+
+</code></pre>
+<p>終端機 B：</p>
+<pre><code>$ ./client
+Enter expression (e.g. 3 + 5), type exit to quit:
+&gt; 3 + 5
+result: 8
+&gt; 10 * 4
+result: 40
+&gt; 7 / 0
+result: invalid input
+&gt; 100 - 1
+result: 99
+&gt; exit
+
+</code></pre></div>
+<div class="card g" id="Lab7_g2"><div class="head"><span class="folder">Lab7_g2</span><span class="title">Shared Memory 寫入多筆訊息直到 exit</span><span class="tag">猜題</span><span class="tag">可能性:高</span></div>
+<div class="files">檔案:<code>consumer.c</code> <code>producer.c</code> <span class="note">· 出處:review/predict/Lab7_predict.md</span></div>
+<ul>
+<li><code>producer.c</code>：建立 shared memory，讓使用者<strong>反覆輸入訊息直到 <code>exit</code></strong>（最多 10 筆），全部存進 shared memory，結束時印出寫入筆數。</li>
+<li><code>consumer.c</code>：讀出 shared memory 中<strong>所有</strong>訊息，加上編號印出，最後 <code>munmap</code>、<code>close</code>、<code>shm_unlink</code>。</li>
+</ul>
+<p>終端機 A：</p>
+<pre><code>$ ./producer
+Enter messages (type exit to finish):
+&gt; hello
+&gt; OS lab 7
+&gt; shared memory
+&gt; exit
+3 message(s) written to shared memory.
+
+</code></pre>
+<p>終端機 B（producer 結束後執行）：</p>
+<pre><code>$ ./consumer
+Read 3 message(s) from shared memory:
+[1] hello
+[2] OS lab 7
+[3] shared memory
+
+</code></pre></div>
+<div class="card g" id="Lab7_g3"><div class="head"><span class="folder">Lab7_g3</span><span class="title">Shared Memory 傳整數陣列，consumer 計算</span><span class="tag">猜題</span><span class="tag">可能性:中高</span></div>
+<div class="files">檔案:<code>consumer.c</code> <code>producer.c</code> <span class="note">· 出處:review/predict/Lab7_predict.md</span></div>
+<ul>
+<li><code>producer.c</code>：使用者反覆輸入整數直到 <code>exit</code>，把<strong>整數</strong>（不是字串）存進 shared memory。</li>
+<li><code>consumer.c</code>：讀出所有整數，印出 sum、avg（小數兩位）、max、min，最後清理 shared memory。</li>
+</ul>
+<p>終端機 A：</p>
+<pre><code>$ ./producer
+Enter integers (type exit to finish):
+&gt; 12
+&gt; 7
+&gt; -3
+&gt; 25
+&gt; 9
+&gt; exit
+5 number(s) written.
+
+</code></pre>
+<p>終端機 B：</p>
+<pre><code>$ ./consumer
+Numbers: 12 7 -3 25 9
+sum = 50, avg = 10.00, max = 25, min = -3
+
+</code></pre></div>
+<div class="card g" id="Lab7_g4"><div class="head"><span class="folder">Lab7_g4</span><span class="title">依 Priority 接收 + mq_getattr + O_NONBLOCK</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>receiver.c</code> <code>sender.c</code> <span class="note">· 出處:review/predict/Lab7_predict.md</span></div>
+<ul>
+<li><code>sender.c</code>：使用者反覆輸入 <code>&lt;priority&gt; &lt;message&gt;</code> 直到 <code>exit</code>，以指定 priority 送進 queue；結束時<strong>只 close 不 unlink</strong>。</li>
+<li><code>receiver.c</code>：<strong>在 sender 結束之後才執行</strong>。先用 <code>mq_getattr</code> 印出 queue 的 <code>maxmsg / msgsize / curmsgs</code>，再用<strong>非阻塞</strong>方式把 queue 中訊息全部收完並印出各自的 priority，queue 空了就結束，最後 close &amp; unlink。</li>
+</ul>
+<p>終端機 A：</p>
+<pre><code>$ ./sender
+Input format: &lt;priority&gt; &lt;message&gt;, type exit to quit
+&gt; 1 low task
+&gt; 5 urgent task
+&gt; 3 normal task A
+&gt; 3 normal task B
+&gt; 9 fire alarm
+&gt; exit
+
+</code></pre>
+<p>終端機 B（之後執行）：</p>
+<pre><code>$ ./receiver
+maxmsg=10, msgsize=256, curmsgs=5
+received (prio 9): fire alarm
+received (prio 5): urgent task
+received (prio 3): normal task A
+received (prio 3): normal task B
+received (prio 1): low task
+queue is empty.
+
+</code></pre></div>
+<div class="card g" id="Lab7_g5"><div class="head"><span class="folder">Lab7_g5</span><span class="title">結合兩者：shm 放資料、message queue 當通知</span><span class="tag">猜題</span><span class="tag">可能性:中</span></div>
+<div class="files">檔案:<code>consumer.c</code> <code>producer.c</code> <span class="note">· 出處:review/predict/Lab7_predict.md</span></div>
+<p>Exercise 2 的 consumer 必須等 producer 寫完才能手動執行。請改成：<strong>consumer 可以先執行並等待</strong>，producer 每輸入一筆訊息就寫進 shared memory，然後用 message queue 通知 consumer「資料好了」；consumer 收到通知才去讀 shared memory 並印出，讀完再回覆 producer 可以寫下一筆。輸入 <code>exit</code> 時兩邊都結束，由 consumer 清除所有 IPC 物件。</p>
+<p>終端機 A（consumer 先執行）：</p>
+<pre><code>$ ./consumer
+Waiting for producer...
+Read from shared memory: hello
+Read from shared memory: second message
+Read from shared memory: bye bye
+Producer finished.
+
+</code></pre>
+<p>終端機 B：</p>
+<pre><code>$ ./producer
+Enter the message: hello
+Enter the message: second message
+Enter the message: bye bye
+Enter the message: exit
+
+</code></pre></div>
+<div class="card g" id="Lab7_g6"><div class="head"><span class="folder">Lab7_g6</span><span class="title">驗證觀念：kernel persistence 與 MAP_PRIVATE vs MAP_SHARED</span><span class="tag">猜題</span><span class="tag">可能性:中低</span></div>
+<div class="files">檔案:<code>cleaner.c</code> <code>reader.c</code> <code>writer.c</code> <span class="note">· 出處:review/predict/Lab7_predict.md</span></div>
+<ol>
+<li><code>writer.c</code>：建立 shared memory，寫入 <code>"original data"</code> 後直接結束（<strong>不 unlink</strong>）。用 <code>ls /dev/shm</code> 證明 process 結束後物件仍存在。</li>
+<li><code>reader.c</code>：先用 <code>MAP_PRIVATE</code>（PROT_READ|PROT_WRITE）映射並修改內容，再用 <code>MAP_SHARED</code> 映射同一個物件，印出內容，證明 MAP_PRIVATE 的修改<strong>不會</strong>影響到 shared memory；接著用 MAP_SHARED 修改。再執行一次 reader 證明 MAP_SHARED 的修改有留下來。</li>
+<li><code>cleaner.c</code>：印出最終內容並 <code>shm_unlink</code>，之後 <code>ls /dev/shm</code> 看不到物件。</li>
+</ol>
+<p>輸出範例：</p>
+<pre><code>$ ./writer
+writer: wrote &quot;original data&quot; and exit (no shm_unlink)
+$ ls /dev/shm
+persistShm_lab7p
+$ ./reader
+[PRIVATE] before: original data
+[PRIVATE] after : modified by MAP_PRIVATE
+[SHARED ] content: original data
+[SHARED ] after : modified by MAP_SHARED
+$ ./reader
+[PRIVATE] before: modified by MAP_SHARED
+[PRIVATE] after : modified by MAP_PRIVATE
+[SHARED ] content: modified by MAP_SHARED
+[SHARED ] after : modified by MAP_SHARED
+$ ./cleaner
+cleaner: final content = modified by MAP_SHARED
+cleaner: shm_unlink done
+$ ls /dev/shm
+
+</code></pre></div>
+</body></html>

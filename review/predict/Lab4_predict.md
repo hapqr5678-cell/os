@@ -1,6 +1,6 @@
 # Lab 4（Library）上機考猜題
 
-> 依據：`Lab4.pptx`（28 頁，含講者備註與截圖）、`practice/lab4/` 參考答案、`review/Lab4_review.md`
+> 依據：`Lab4.pptx`（28 頁，含講者備註與截圖）、`practice/Lab4_ex/` 參考答案、`review/Lab4_review.md`
 > 驗證環境：Ubuntu 24.04、gcc 13.3.0、GNU ar。每題都實際用 gcc/ar 建置並執行過（✅ 已驗證）。
 > **dynamic 的部分**：驗證時用 `LD_LIBRARY_PATH=.`（或模擬 /lib 的資料夾）代替 `sudo cp ... /lib`；**考試請照簡報寫 `sudo cp xxx.so /lib/xxx.so`**。
 

@@ -1,6 +1,6 @@
 # Lab 7 上機考猜題：IPC（Message Queue + Shared Memory）
 
-> 依據：Lab7-1.pdf（27 頁，Message Queue）、Lab7-2.pdf（30 頁，Shared Memory）逐頁看過（兩份都是純圖片 PDF），加上 `practice/lab7/ex1`、`ex2` 參考答案。
+> 依據：Lab7-1.pdf（27 頁，Message Queue）、Lab7-2.pdf（30 頁，Shared Memory）逐頁看過（兩份都是純圖片 PDF），加上 `practice/Lab7_ex1`、`ex2` 參考答案。
 > 頁碼寫法：**7-1 p.13** = Lab7-1.pdf 第 13 頁；**7-2 p.18** = Lab7-2.pdf 第 18 頁。
 > 每一題的程式都在本機用 `gcc 13.3 (Ubuntu 24.04)` 加 `-Wall -lrt` 實際編譯執行過，用「receiver 背景執行 + 管線餵 sender」模擬兩個終端機。queue / shm 名稱都加 `_lab7p` 後綴，測完都已 unlink，`/dev/mqueue`、`/dev/shm` 沒有殘留。
 > （環境備註：容器一開始沒有掛 `/dev/mqueue`，但 `mq_open` 等系統呼叫本身可用；我另外 `mount -t mqueue none /dev/mqueue` 方便查看殘留 queue。上機時 Ubuntu 預設就有 `/dev/mqueue`。）

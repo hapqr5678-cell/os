@@ -1,6 +1,6 @@
 # Lab 5 上機考猜題：Kernel Module
 
-> 依據：`Lab5.pptx`（36 頁，含投影片內的程式截圖與講者備註）＋ `practice/lab5/`（d2ts.c、myage.c、Makefile）＋ `review/Lab5_review.md`
+> 依據：`Lab5.pptx`（36 頁，含投影片內的程式截圖與講者備註）＋ `practice/Lab5_ex/`（d2ts.c、myage.c、Makefile）＋ `review/Lab5_review.md`
 > 前提：只出簡報教過的東西。本檔用到的 kernel API 只有：`printk`（KERN_INFO／KERN_ERR／KERN_WARNING）、`module_param`、`MODULE_PARM_DESC`、`EXPORT_SYMBOL`／`extern`、`MODULE_LICENSE`、`return -EINVAL`、`mktime64`（p.35 提示），再加上 exercise 要你「取得當前時間戳記」（p.32）一定要用、但簡報沒寫名字的 `ktime_get_real_seconds()`（練習答案就是用它）。
 >
 > **⚠️ 無法在此環境編譯驗證**：這台機器沒有 `/lib/modules`，也沒有 kernel headers，所有 `.c` 都**沒有**經過真正的 kbuild／insmod 測試。我做了下面兩件事來補：
@@ -24,7 +24,7 @@
 | G | **modinfo 會顯示 MODULE_PARM_DESC**；講者備註提到 `08` 被當八進位的 bug。 | p.20、p.21 備註 | 可能叫你 `modinfo` 秀出參數說明；demo 時參數**不要打前導 0**。 |
 | H | 範例輸出的 `ts=63163929600`（2001/8/1）**不是** Unix 時間（`mktime64` 算出來是 `996624000`，比對過 glibc）。 | p.33 截圖 | 自己的數字跟範例不一樣不用慌，以 `mktime64` 為準；被問就說「我用的是 Unix epoch 秒數」。 |
 
-**第 0 題（不列入排序，但一定要會）：原題重做。** 把 `practice/lab5/` 的 d2ts.c 改名成 `date2timestamp.c`（Makefile 的 `obj-m` 一起改），10 分鐘內要能從零默寫出來。參考答案見 `review/Lab5_review.md` §5。以下 6 題都是它的變形。
+**第 0 題（不列入排序，但一定要會）：原題重做。** 把 `practice/Lab5_ex/` 的 d2ts.c 改名成 `date2timestamp.c`（Makefile 的 `obj-m` 一起改），10 分鐘內要能從零默寫出來。參考答案見 `review/Lab5_review.md` §5。以下 6 題都是它的變形。
 
 ---
 
@@ -894,7 +894,7 @@ sudo insmod dayofyear.ko year=2000 month=2 date=29
 - 用假的 `<linux/module.h>` 等標頭（`kmock.h`）：`printk` → `printf`、`module_param` → 登錄到參數表、`EXPORT_SYMBOL` → 空、`mktime64` → **逐字照抄 `kernel/time/time.c`**、`ktime_get_real_seconds()` → 固定回傳 1793152800（2026-10-28 10:00 台灣）。
 - 6 題共 11 個 .c，`gcc -std=gnu11 -Wall -Wextra` 編譯 **0 error、0 warning**；另用 `-Wdeclaration-after-statement -Wshadow -Wstrict-prototypes` 檢查也沒有問題（`-Wmissing-prototypes` 只對 export 的函式報 warning，見 Q3 坑 5）。
 - 自製迷你 insmod／rmmod（`kmock.c`）模擬：每次 insmod 參數回到預設值、`kstrtoint` 的 base 0 解析（`08` 會失敗）、未知參數、相依模組未載入 → `Unknown symbol`、被使用時 rmmod → `in use by`、重複 insmod → `File exists`、init 回傳 `-EINVAL` → `Invalid parameters`。本檔所有「預期輸出」都是從這個模擬器實跑複製來的。
-- 先拿你的 `practice/lab5/d2ts.c`、`myage.c` 原檔跑一次確認模擬器正確：`year=2001 month=8 date=1` → `ts=996624000`、`25 years and 94 days`、`You are an adult (18+).`；`year=1970 month=13 date=-1` → `Invalid argument(s).`；`year=2023 month=2 date=29` → 無效；`year=2024 month=2 date=29` → 有效。
+- 先拿你的 `practice/Lab5_ex/d2ts.c`、`myage.c` 原檔跑一次確認模擬器正確：`year=2001 month=8 date=1` → `ts=996624000`、`25 years and 94 days`、`You are an adult (18+).`；`year=1970 month=13 date=-1` → `Invalid argument(s).`；`year=2023 month=2 date=29` → 無效；`year=2024 month=2 date=29` → 有效。
 
 **(2) 純計算邏輯 vs glibc 窮舉比對（`logic_test.c`）**
 ```

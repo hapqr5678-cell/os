@@ -1,6 +1,6 @@
 # Lab 3 複習：System Call vs APIs
 
-> 來源：Lab3.pptx（33 張投影片，含講者備註）＋ practice/lab3/ex.c
+> 來源：Lab3.pptx（33 張投影片，含講者備註）＋ practice/Lab3_ex/ex.c
 
 ---
 
@@ -174,7 +174,7 @@ fclose(fp);
 2. `sequential_read`（用 read，每次 1 byte）vs `sequential_fread`（用 fread，每次 1 byte），每次執行前清 cache。
 3. 結果：read 版 2.94 秒、fread 版 0.14 秒；`strace -c` 顯示 read 版 10,485,762 次 `read`，fread 版只有 2,562 次。
 
-### 4.6 學生作業 practice/lab3/ex.c（只用 unistd.h 印整數）
+### 4.6 學生作業 practice/Lab3_ex/ex.c（只用 unistd.h 印整數）
 ```c
 #include <unistd.h>
 void myp(long long a) {

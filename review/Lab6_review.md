@@ -1,6 +1,6 @@
 # Lab 6 複習：Process Control
 
-> 來源：Lab6.pptx（29 張投影片，含講者備註）＋ practice/lab6/（ex1.c、ex2.c）
+> 來源：Lab6.pptx（29 張投影片，含講者備註）＋ practice/Lab6_ex1、Lab6_ex2/（ex1.c、ex2.c）
 
 ---
 
@@ -201,7 +201,7 @@ switch(new_pid){
 - 投影片的第一個參數寫了完整路徑 `/bin/ls`；因為是 `execlp`，寫 `"ls"` 也可以（會去 PATH 找）。
 - 這個範例 **parent 沒有 wait**，所以 `ls` 的輸出和 parent 的輸出順序不保證，甚至可能 parent 先結束、shell prompt 先出現，`ls` 輸出接在後面。
 
-### 4.7 學生作業 practice/lab6/ex1.c（Exercise 1）
+### 4.7 學生作業 practice/Lab6_ex1/ex1.c（Exercise 1）
 ```c
 int global_var = 10;                       // data section
 void print_info(const char *title, int local_var) {
@@ -253,7 +253,7 @@ PID: 6461     ,PPID: 5746     , Global variable: 10   , Local variable: 10
 - `wait(NULL)` 讓 parent 在 child 之後輸出，順序固定、好 demo。
 - 「Parent process after increment」那行 parent 其實**沒有做遞增**（只是再印一次），這和投影片的 Result 一致（parent 兩行都是 10）。題目文字說「increases both the values」語意上有點模糊；如果助教要求 parent 也要自己遞增，parent 會印出 11——但那是 parent 自己的 11，與 child 無關。考試時能解釋這一點即可。
 
-### 4.8 學生作業 practice/lab6/ex2.c（Exercise 2：process tree）
+### 4.8 學生作業 practice/Lab6_ex2/ex2.c（Exercise 2：process tree）
 目標樹：
 ```
         A

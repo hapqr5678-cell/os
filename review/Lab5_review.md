@@ -1,6 +1,6 @@
 # Lab 5 複習：Kernel Module
 
-> 來源：Lab5.pptx（36 張投影片，含講者備註）＋ practice/lab5/（d2ts.c、myage.c、Makefile）
+> 來源：Lab5.pptx（36 張投影片，含講者備註）＋ practice/Lab5_ex/（d2ts.c、myage.c、Makefile）
 > 註：投影片中的資料夾名稱寫 `lab3/...`（沿用舊版），內容就是本 Lab 的 kernel module。
 
 ---
@@ -191,7 +191,7 @@ Symbol_function(-100): -1
 ```
 `lsmod` 顯示 `symbol_A ... 1 symbol_B`（被 B 使用）。（投影片的 symbol_B.c 中 `MODULE_DESCRIPTION` 寫成 `symbol_A`，是投影片的小筆誤。）
 
-### 4.5 學生作業 practice/lab5/d2ts.c（date2timestamp）
+### 4.5 學生作業 practice/Lab5_ex/d2ts.c（date2timestamp）
 ```c
 int year = 2000, month = 1, date = 1;
 time64_t ts = 0;
@@ -225,7 +225,7 @@ int init_module(void) {
 - `year=2001 month=8 date=1` → `ts=996624000`（2001-08-01 00:00:00 UTC 的 Unix 時間）。
 - `year=1970 month=13 date=-1` → `Invalid argument(s).`，insmod 顯示 `ERROR: could not insert module ...: Invalid parameters`。
 
-**practice/lab5/myage.c**
+**practice/Lab5_ex/myage.c**
 ```c
 extern time64_t ts;
 extern int is_adult(time64_t now);

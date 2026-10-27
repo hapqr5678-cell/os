@@ -1,6 +1,6 @@
 # Lab 1 複習：Shell Script（Vim + Bash）
 
-> 來源：Lab1.pptx（54 張投影片）＋ practice/lab1/ex.sh
+> 來源：Lab1.pptx（54 張投影片）＋ practice/Lab1_ex/ex.sh
 
 ---
 
@@ -179,7 +179,7 @@ done
 ```
 `./ex3.sh | ./ex4.sh` → ex3 的 4 行輸出變成 ex4 的輸入，`while read` 一次讀一行，直到 EOF 結束。輸出 `Amy Lin / Jimmy Wang / Jhonny Chen / Purple Red`（投影片原文把 Johnny 拼成 Jhonny，是投影片的 typo，不影響邏輯）。
 
-### 4.8 學生作業 practice/lab1/ex.sh（猜數字）
+### 4.8 學生作業 practice/Lab1_ex/ex.sh（猜數字）
 ```bash
 #!/bin/sh
 echo "Please enter the target number between 1 and 10"

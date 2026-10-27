@@ -1,7 +1,7 @@
 # Lab 7 複習：IPC — Message Queue（7-1）＋ Shared Memory（7-2）
 
 > 來源：Lab7-1.pdf（27 頁）、Lab7-2.pdf（30 頁）——兩份 PDF 都是**圖片型**投影片，沒有文字層，內容是將頁面圖片逐張檢視後整理的。
-> 學生程式：practice/lab7/ex1/（sender.c、receiver.c）、practice/lab7/ex2/（producer.c、consumer.c）以及編好的執行檔。
+> 學生程式：practice/Lab7_ex1/（sender.c、receiver.c）、practice/Lab7_ex2/（producer.c、consumer.c）以及編好的執行檔。
 
 ---
 
@@ -137,7 +137,7 @@ int unlink = mq_unlink(NAME);
   2. `while(1)` 沒有出口，下面的 `mq_close`、`mq_unlink` **永遠執行不到**——這就是 Exercise 要加入 `exit` 機制的原因。
   3. 變數取名 `close`、`unlink` 會遮蔽同名的 system call 函式，風格不佳。
 
-### 學生作業 practice/lab7/ex1/sender.c
+### 學生作業 practice/Lab7_ex1/sender.c
 ```c
 struct mq_attr attr;
 attr.mq_flags = 0;  attr.mq_maxmsg = 10;  attr.mq_msgsize = MAX_MSGSIZE;  attr.mq_curmsgs = 0;
@@ -155,7 +155,7 @@ while (1) {
 }
 if (mq_close(mqd) == -1) { ... }                 // sender 只 close，不 unlink
 ```
-### practice/lab7/ex1/receiver.c
+### practice/Lab7_ex1/receiver.c
 ```c
 mqd_t mqd = mq_open(NAME, O_RDONLY | O_CREAT, 0644, &attr);
 mq_getattr(mqd, &attr);                      // 查實際 mq_msgsize
@@ -186,7 +186,7 @@ Send to receiver:             received: test
   2. 若 receiver 沒在跑，sender 送超過 `mq_maxmsg`（10）則訊息後，`mq_send` 會**阻塞**等待空位。
   3. 去掉了換行，所以 receiver 的 printf 自己補 `\n`；和投影片範例（保留換行）寫法不同，但都正確。
   4. 若 receiver 因 Ctrl+C 中途結束，queue 沒被 unlink 會殘留（補充：可在 `/dev/mqueue/` 看到，`rm /dev/mqueue/myMsgQueue` 清掉）。
-- `practice/lab7` 資料夾裡已有編好的 `sender`、`receiver`、`producer`、`consumer` 執行檔。
+- `practice/Lab7_ex1、Lab7_ex2/` 資料夾裡已有編好的 `sender`、`receiver`、`producer`、`consumer` 執行檔。
 
 ## 2.4 Exercise 1 題目（50 pts.）
 - **sender.c**：建立 message queue；使用者可以反覆輸入字串，直到輸入 `"exit"`；把訊息送進 queue。
@@ -309,7 +309,7 @@ return 0;
 - `%p` 印的是**位址**；Exercise 要求印**內容**，要改成 `printf("%s\n", (char *)map_addr)`。
 - 範例沒有 munmap、close、shm_unlink。
 
-### 學生作業 practice/lab7/ex2/producer.c
+### 學生作業 practice/Lab7_ex2/producer.c
 ```c
 int fd = shm_open(NAME, O_CREAT | O_RDWR, 0666);         // 建立或開啟
 ftruncate(fd, SMSIZE);                                   // 設 1024 bytes
@@ -320,7 +320,7 @@ ptr[strcspn(ptr, "\n")] = '\0';                          // 去掉換行
 munmap(ptr, SMSIZE);
 close(fd);                                               // 不 unlink，資料留給 consumer
 ```
-### practice/lab7/ex2/consumer.c
+### practice/Lab7_ex2/consumer.c
 ```c
 int fd = shm_open(NAME, O_RDONLY, 0666);                 // 開已存在的
 char *ptr = mmap(NULL, SMSIZE, PROT_READ, MAP_SHARED, fd, 0);

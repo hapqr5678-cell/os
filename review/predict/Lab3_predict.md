@@ -1,6 +1,6 @@
 # Lab 3 上機考猜題：System Call vs APIs
 
-> 依據：`Lab3.pptx`（33 頁，含 example1~4 的程式截圖）＋ `practice/lab3/ex.c`
+> 依據：`Lab3.pptx`（33 頁，含 example1~4 的程式截圖）＋ `practice/Lab3_ex/ex.c`
 > 範圍原則：**只出簡報教過的東西**。所有參考答案都在 gcc 13.3（Ubuntu 24.04）實際編譯、執行過。
 
 ---

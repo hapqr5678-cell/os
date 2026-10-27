@@ -1,6 +1,6 @@
 # Lab 6 上機考猜題：Process Control
 
-> 範圍：Lab6.pptx 全部 29 頁，含投影片圖片裡的範例程式與 Result 截圖，以及 practice/lab6/ex1.c、ex2.c。
+> 範圍：Lab6.pptx 全部 29 頁，含投影片圖片裡的範例程式與 Result 截圖，以及 practice/Lab6_ex1/ex1.c、ex2.c。
 > 每一題的參考答案都已在 Linux 上用 `gcc -Wall` 編譯執行，沒有任何 warning。process 樹題另外用腳本比對每個 process 的 PPID 是否等於它 parent 的 PID。
 > 驗證用的原始碼放在 `/tmp/claude-0/-home-user-os/1dcd3112-7322-5920-934d-1535c60cff9f/scratchpad/lab6/`。
 
@@ -67,7 +67,7 @@ PID: 6461   ,PPID: 5746   , Global variable: 10   , Local variable: 10
 - 截圖中 parent 的「after increment」仍然是 **10 / 10**。如果 parent 也做了 `++`，這裡會是 11，所以截圖裡的 parent 並沒有遞增。截圖要表達的是「child 改了變數，parent 看到的值仍然是 10，沒有被影響」。
 - 「both processes」修飾的應該是 **print**（兩個 process 都要印），不是 increase。
 - 截圖裡 child 的兩段完整印完之後 parent 才印，表示 parent 有先 `wait()`。ex1.c 也是這樣寫。
-- ✅ 已驗證：編譯執行 `practice/lab6/ex1.c`，輸出格式和數值與截圖逐行相同（child 11/11，parent 10/10）。
+- ✅ 已驗證：編譯執行 `practice/Lab6_ex1/ex1.c`，輸出格式和數值與截圖逐行相同（child 11/11，parent 10/10）。
 - ⚠️ **考試建議**：題目文字寫什麼就照做。如果考題明確寫「parent 也要遞增」，那 parent 會印 **11 而不是 12**，因為它從自己那份 10 開始加。這正是第 2 題要練的情況。
 
 ---

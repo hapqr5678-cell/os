@@ -1,6 +1,6 @@
 # Lab 1（Shell Script）上機考猜題
 
-> 範圍：`Lab1.pptx` 第 1–53 頁。參考答案：`practice/lab1/ex.sh`。
+> 範圍：`Lab1.pptx` 第 1–53 頁。參考答案：`practice/Lab1_ex/ex.sh`。
 > 所有參考答案都在 scratchpad 實際跑過，`bash` 跑一次、`sh`（Ubuntu 的 `/bin/sh` 是 **dash**）再跑一次，並用 `printf '...' | ./xxx.sh` 模擬鍵盤輸入。
 > 頁碼 = 投影片右下角的編號（例如 p.37 = 「Bash Shell Scripting Tutorial (19/28)」）。
 
@@ -35,7 +35,7 @@ Bingo!
 ```
 **觀察：** 這題的重點是「全域變數 `min`/`max` 被迴圈更新，function 每次印出來的範圍跟著變」。所以「function 直接讀全域變數」這個觀念（p.44 `PrintNumber` 印 `$num`）其實是 exercise 偷偷考的地方。
 
-> 修正：`00_總覽與考前速查.md` 寫 `practice/lab1/ex.sh`「沒有用 function」，這是舊資訊。目前的 `ex.sh` **已經有** `in_range()`、`ask_guess()` 兩個 function，也有檢查輸入。不過它用了 `case ''|*[!0-9]*`、`!`、`&&`、`return` 這些簡報沒教的寫法。考場上照簡報的寫法就夠了。
+> 修正：`00_總覽與考前速查.md` 寫 `practice/Lab1_ex/ex.sh`「沒有用 function」，這是舊資訊。目前的 `ex.sh` **已經有** `in_range()`、`ask_guess()` 兩個 function，也有檢查輸入。不過它用了 `case ''|*[!0-9]*`、`!`、`&&`、`return` 這些簡報沒教的寫法。考場上照簡報的寫法就夠了。
 
 ### 0.2 簡報教了，但 exercise 沒考到（最可能拿來變形）
 
