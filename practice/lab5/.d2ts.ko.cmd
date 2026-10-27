@@ -1,0 +1,1 @@
+savedcmd_d2ts.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T /usr/src/linux-headers-7.0.0-38-generic/scripts/module.lds -o d2ts.ko d2ts.o d2ts.mod.o .module-common.o
