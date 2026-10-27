@@ -1,5 +1,46 @@
 # practice 題目索引
 
+## 看到題目怎麼找資料夾
+
+**步驟:① 用關鍵字認出 Lab → ② 用特徵挑最像的題目 → ③ 打開資料夾,從那份程式改,不要從零寫。**
+
+### ① 判斷是哪個 Lab
+
+| 題目出現這些字 | Lab |
+|---|---|
+| shell、`.sh`、bash、echo、read、`$1` | **Lab 1** |
+| system call、syscall、`SYSCALL_DEFINE`、462、dmesg、重編 kernel | **Lab 2** |
+| 只能用 `<unistd.h>`、open/read/write/close、fd、權限、strace | **Lab 3** |
+| library、`.a`、`.so`、static、dynamic、shared、`ar`、`ldd` | **Lab 4** |
+| kernel module、`.ko`、insmod、rmmod、module_param、EXPORT_SYMBOL | **Lab 5** |
+| process、fork、wait、PID/PPID、process tree、exec | **Lab 6** |
+| message queue、mq_、shared memory、shm_、mmap、sender/receiver、producer/consumer | **Lab 7** |
+
+### ② 挑最像的題目
+
+| Lab | 題目特徵 → 資料夾 |
+|---|---|
+| 1 | 猜數字 → `ex`、`g1`;範圍/次數用參數給 → `g2`;選單、計算機、case → `g3`;兩支 script 用 pipe 串接 → `g4`;命令列數字算總和/最大值 → `g5`;帳號密碼、字串比較 → `g6` |
+| 2 | 一個參數印 n 次 → `ex2`、`g1`;兩參數相加回傳 → `g2`;kernel 計算後回傳(累加) → `g3`;問要改哪些檔案、指令順序 → `g4`;新增第二個 syscall → `g5`;參數不合法回傳錯誤 → `g6` |
+| 3 | 只用 unistd.h 印數字/字串 → `ex`、`g1`;從鍵盤讀數字(fd 0) → `g2`;複製檔案(system call) → `g3`;複製檔案(fopen/fread) → `g6`;建檔指定權限 → `g4`;write vs fwrite 速度、strace → `g5` |
+| 4 | sort + static/dynamic 比大小 → `ex`、`g3`;降冪或 N 個數 → `g1`;多個 .c 包一個 library(max/min/avg) → `g2`;更新 library 比較 static/dynamic → `g4`;四則運算 → `g5`;字串反轉/轉大寫 → `g6` |
+| 5 | 生日轉時間戳、活了幾年 → `ex`;倒數、距離某天多久 → `g1`;參數有時分秒 → `g2`;export **函式**、兩日期相差幾天 → `g3`;足歲、下次生日 → `g4`;星期幾 → `g5`;單一 module、第幾天、閏年 → `g6` |
+| 6 | global/local + fork → `ex1`(parent 也改值 → `g2`);process tree → `ex2`(換一棵樹 → `g1`,一條直線 → `g5`);exec、execlp、執行 ls → `g3`;迴圈產生多個 child → `g4`;fork 幾次有幾個 process → `g6` |
+| 7 | message queue 單向傳字串 → `ex1`;雙向、計算機 → `g1`;priority → `g4`;shared memory 一則訊息 → `ex2`;多筆訊息 → `g2`;傳數字並計算 → `g3`;兩者一起用 → `g5`;MAP_PRIVATE/SHARED、資料會不會保留 → `g6` |
+
+資料夾全名是 `Lab{編號}_{上表代號}`,例如 Lab 6 的 `g3` 就是 `practice/Lab6_g3/`。
+
+### ③ 打開資料夾後
+
+1. 先看 `README.md` 的「題目」,和考卷對照,找出不同的地方。
+2. 複製程式到自己的資料夾,只改不同的部分。
+3. 考前看過 README 最後的「容易踩的坑」。
+
+**都不太像?** 先看 `LabN_ex`(原題)。所有猜題都是從原題變形來的,骨架一定用得上。
+
+
+## 總表
+
 - `LabN_ex*`:課堂 Exercise 原題(簡報最後的練習)
 - `LabN_gK`:上機考猜題(依可能性排序,g1 最可能)
 - 每個資料夾裡的 `README.md` 有完整題目、參考答案說明與容易踩的坑;離線速查請開 `題目索引.pdf` 或 `題目索引.html`。

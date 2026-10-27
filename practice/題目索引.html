@@ -20,10 +20,99 @@ table.idx td:nth-child(1){width:6.5em}table.idx td:nth-child(3){width:4em;white-
 pre{background:var(--code);padding:6px 8px;font-size:8.5pt;line-height:1.35;white-space:pre-wrap;word-break:break-all;border-radius:3px}
 code{font-family:"WenQuanYi Zen Hei Mono",monospace;font-size:.92em}
 .card table{border-collapse:collapse;font-size:9pt} .card td,.card th{border:1px solid var(--line);padding:2px 5px}
+.guide table{border-collapse:collapse;width:100%;font-size:9.5pt;margin:.3em 0 .6em}.guide td,.guide th{border:1px solid var(--line);padding:3px 6px;text-align:left;vertical-align:top}.guide th{background:#eee}.guide td:first-child{white-space:nowrap}.guide h2{font-size:15pt;margin:.4em 0}.guide h3{font-size:12pt;margin:.6em 0 .2em}
 .note{font-size:9.5pt;color:var(--muted)}
 a{color:inherit;text-decoration:none}
 </style></head><body>
 <h1>上機考題目索引</h1><p class="note">看題目 → 找到對應資料夾 → 打開 <code>practice/資料夾/</code> 裡的程式碼。藍色 <b>LabN_ex</b> = 課堂 Exercise 原題;綠色 <b>LabN_gK</b> = 猜題(g1 最可能)。每個資料夾的 <code>README.md</code> 有完整解說與易錯點。</p>
+<div class="guide"><h2>看到題目怎麼找資料夾</h2>
+<p><strong>步驟:① 用關鍵字認出 Lab → ② 用特徵挑最像的題目 → ③ 打開資料夾,從那份程式改,不要從零寫。</strong></p>
+<h3>① 判斷是哪個 Lab</h3>
+<table>
+<thead>
+<tr>
+<th>題目出現這些字</th>
+<th>Lab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shell、<code>.sh</code>、bash、echo、read、<code>$1</code></td>
+<td><strong>Lab 1</strong></td>
+</tr>
+<tr>
+<td>system call、syscall、<code>SYSCALL_DEFINE</code>、462、dmesg、重編 kernel</td>
+<td><strong>Lab 2</strong></td>
+</tr>
+<tr>
+<td>只能用 <code>&lt;unistd.h&gt;</code>、open/read/write/close、fd、權限、strace</td>
+<td><strong>Lab 3</strong></td>
+</tr>
+<tr>
+<td>library、<code>.a</code>、<code>.so</code>、static、dynamic、shared、<code>ar</code>、<code>ldd</code></td>
+<td><strong>Lab 4</strong></td>
+</tr>
+<tr>
+<td>kernel module、<code>.ko</code>、insmod、rmmod、module_param、EXPORT_SYMBOL</td>
+<td><strong>Lab 5</strong></td>
+</tr>
+<tr>
+<td>process、fork、wait、PID/PPID、process tree、exec</td>
+<td><strong>Lab 6</strong></td>
+</tr>
+<tr>
+<td>message queue、mq_、shared memory、shm_、mmap、sender/receiver、producer/consumer</td>
+<td><strong>Lab 7</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>② 挑最像的題目</h3>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>題目特徵 → 資料夾</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>猜數字 → <code>ex</code>、<code>g1</code>;範圍/次數用參數給 → <code>g2</code>;選單、計算機、case → <code>g3</code>;兩支 script 用 pipe 串接 → <code>g4</code>;命令列數字算總和/最大值 → <code>g5</code>;帳號密碼、字串比較 → <code>g6</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>一個參數印 n 次 → <code>ex2</code>、<code>g1</code>;兩參數相加回傳 → <code>g2</code>;kernel 計算後回傳(累加) → <code>g3</code>;問要改哪些檔案、指令順序 → <code>g4</code>;新增第二個 syscall → <code>g5</code>;參數不合法回傳錯誤 → <code>g6</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>只用 unistd.h 印數字/字串 → <code>ex</code>、<code>g1</code>;從鍵盤讀數字(fd 0) → <code>g2</code>;複製檔案(system call) → <code>g3</code>;複製檔案(fopen/fread) → <code>g6</code>;建檔指定權限 → <code>g4</code>;write vs fwrite 速度、strace → <code>g5</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>sort + static/dynamic 比大小 → <code>ex</code>、<code>g3</code>;降冪或 N 個數 → <code>g1</code>;多個 .c 包一個 library(max/min/avg) → <code>g2</code>;更新 library 比較 static/dynamic → <code>g4</code>;四則運算 → <code>g5</code>;字串反轉/轉大寫 → <code>g6</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>生日轉時間戳、活了幾年 → <code>ex</code>;倒數、距離某天多久 → <code>g1</code>;參數有時分秒 → <code>g2</code>;export <strong>函式</strong>、兩日期相差幾天 → <code>g3</code>;足歲、下次生日 → <code>g4</code>;星期幾 → <code>g5</code>;單一 module、第幾天、閏年 → <code>g6</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>global/local + fork → <code>ex1</code>(parent 也改值 → <code>g2</code>);process tree → <code>ex2</code>(換一棵樹 → <code>g1</code>,一條直線 → <code>g5</code>);exec、execlp、執行 ls → <code>g3</code>;迴圈產生多個 child → <code>g4</code>;fork 幾次有幾個 process → <code>g6</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>message queue 單向傳字串 → <code>ex1</code>;雙向、計算機 → <code>g1</code>;priority → <code>g4</code>;shared memory 一則訊息 → <code>ex2</code>;多筆訊息 → <code>g2</code>;傳數字並計算 → <code>g3</code>;兩者一起用 → <code>g5</code>;MAP_PRIVATE/SHARED、資料會不會保留 → <code>g6</code></td>
+</tr>
+</tbody>
+</table>
+<p>資料夾全名是 <code>Lab{編號}_{上表代號}</code>,例如 Lab 6 的 <code>g3</code> 就是 <code>practice/Lab6_g3/</code>。</p>
+<h3>③ 打開資料夾後</h3>
+<ol>
+<li>先看 <code>README.md</code> 的「題目」,和考卷對照,找出不同的地方。</li>
+<li>複製程式到自己的資料夾,只改不同的部分。</li>
+<li>考前看過 README 最後的「容易踩的坑」。</li>
+</ol>
+<p><strong>都不太像?</strong> 先看 <code>LabN_ex</code>(原題)。所有猜題都是從原題變形來的,骨架一定用得上。</p></div><h2 class="lab">總表</h2>
 <table class="idx"><tr><th>資料夾</th><th>題目</th><th>可能性</th><th>檔案</th></tr>
 <tr><th colspan="4">Lab 1:Shell Script</th></tr>
 <tr><td><a href="#Lab1_ex"><code>Lab1_ex</code></a></td><td>猜數字遊戲 Number Guessing Game</td><td>原題</td><td>ex.sh</td></tr>
